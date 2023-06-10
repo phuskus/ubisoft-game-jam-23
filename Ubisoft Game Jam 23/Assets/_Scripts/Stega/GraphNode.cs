@@ -36,7 +36,7 @@ public class GraphNode : MonoBehaviour
 
 	private void OnClick()
 	{
-		DungeonGraphManager.HopLevels(numberOfHops);
+		DungeonGraphManager.LoadDungeon(numberOfHops);
 	}
 
 	private void Update()
