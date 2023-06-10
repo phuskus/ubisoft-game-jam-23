@@ -7,7 +7,7 @@ public class EnemyDamageTrigger : MonoBehaviour
     private int playerLayer;
     private bool triggered = false;
 
-    private float waitTime = 3; // time until the trigger activates again
+    private float waitTime = 0.5f; // time until the trigger activates again
 
     [SerializeField] private Enemy enemy;
 

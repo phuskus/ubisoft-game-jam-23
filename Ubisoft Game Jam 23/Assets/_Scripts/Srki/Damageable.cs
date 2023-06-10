@@ -1,14 +1,9 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public abstract class Damageable : MonoBehaviour, IHandleDeath
 {
-    [SerializeField] protected float maxHealth;
-
-    //[Space(10)]
-    protected Slider healthBar;
+    [SerializeField] protected int maxHealth;
 
     protected int health;   // this needs to be defined in child classes
 
@@ -18,17 +13,12 @@ public abstract class Damageable : MonoBehaviour, IHandleDeath
     public abstract void HandlePain();
     public abstract void HandleDeath();
 
-    public void TakeDamage(int Damage)
+    public void TakeDamage(int damage)
     {
-        int damageTaken = Mathf.Clamp(Damage, 0, health);
+        // Damage taken should always be 1 when the Player is the one doing the damage
+        health -= damage;
 
-        health -= damageTaken;
-        healthBar.value = health;
-
-        if (damageTaken != 0)
-        {
-            TakeDamageEvent?.Invoke(damageTaken);
-        }
+        TakeDamageEvent?.Invoke(damage);
 
         // react to damage
         ReactToDamage();
@@ -36,7 +26,7 @@ public abstract class Damageable : MonoBehaviour, IHandleDeath
 
     public void ReactToDamage()
     {
-        if (health != 0)
+        if (health > 0)
         {
             // custom take-damage behaviour
             HandlePain();
