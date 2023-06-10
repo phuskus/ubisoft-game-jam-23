@@ -1,20 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zmijoguz;
 
 public class Movement : SingletonMono<Movement>
 {
-    private float moveSpeed;
+    [SerializeField] private float moveSpeed = 5;
     private bool outOfStamina;
     public bool PlayerHit;
     private Vector3 targetVector;
-    private Animator animator;
 
-    private void Awake()
-    {
-        animator = GetComponentInChildren<Animator>();
-    }
+    [SerializeField] private CharacterController characterController;
 
     IEnumerator Start()
     {
@@ -25,14 +22,14 @@ public class Movement : SingletonMono<Movement>
 
     private void Update()
     {
-        targetVector = new Vector3(Player.Input.KeyboardInput.x, 0f, Player.Input.KeyboardInput.z).normalized; //get the target to which player should move
+        //targetVector = new Vector3(Player.Input.KeyboardInput.x, 0f, Player.Input.KeyboardInput.z).normalized; //get the target to which player should move
 
-        if(targetVector != Vector3.zero && !PlayerHit)
-        {
-            MoveTowardsTarget(targetVector); //actually move the player
-            animator.SetInteger("Movement", 1);
-        }
-        animator.SetInteger("Movement", 0);
+        //if(targetVector != Vector3.zero && !PlayerHit)
+        //{
+        //    MoveTowardsTarget(targetVector); //actually move the player
+        //}
+
+        characterController.Move(Player.Input.KeyboardInput * moveSpeed * Time.deltaTime);
 
         #region << Useless >>
         //if(Input.GetKey(KeyCode.LeftShift) && !outOfStamina) //while the player has sprint button pressed
@@ -68,7 +65,7 @@ public class Movement : SingletonMono<Movement>
             )
         {
             Vector3 direction = transform.position - other.transform.position;
-            StartCoroutine(KnockBack(direction.normalized));
+            //StartCoroutine(KnockBack(direction.normalized));
         }
     }
 
@@ -77,6 +74,7 @@ public class Movement : SingletonMono<Movement>
         //float speed = moveSpeed * Time.deltaTime; //calculate the move speed over time
         float speed = Player.Settings.playerWalkSpeed * Time.deltaTime; //calculate the move speed over time
         Vector3 targetPosition = transform.position + target * speed; //calculate the target where to move
+
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed);
     }
 
