@@ -17,6 +17,8 @@ public class PlayerData : SingletonSO<PlayerData>
 
     public float TurnRate = 20f;
     public float Acceleration = 1f;
+    public float KnockBackPower = 20f;
+    public float KnockBackFade = 15f;
 
     public float ReloadTime = 0.25f;
     public float ProjectileSpeedStart = 15f;
