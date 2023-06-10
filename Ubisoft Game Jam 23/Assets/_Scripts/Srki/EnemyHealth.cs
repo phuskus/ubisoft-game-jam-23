@@ -45,16 +45,19 @@ public class EnemyHealth : Damageable
     {
         enemy.IsAlive = false;
 
-        gameObject.GetComponent<CapsuleCollider>().enabled = false;
-        ParticleManager.Instance.SpawnEnemyDeathParticle(transform);
+        //gameObject.GetComponent<Collider>().enabled = false;
+
+        //ParticleManager.Instance.SpawnEnemyDeathParticle(transform);
 
         Movement.StopMoving();
-        enemy.Animator.SetInteger("Movement", -1);
+        //enemy.Animator.SetInteger("Movement", -1);
         enemy.Animator.applyRootMotion = true;
-        enemy.Animator.Play("Dying");
+        //enemy.Animator.Play("Dying");
 
         // event comes from inherited class
-        DeathEvent?.Invoke();
+        EventManager.EnemyDeathEvent?.Invoke();
+
+        gameObject.SetActive(false);
     }
 
     // called as animation event

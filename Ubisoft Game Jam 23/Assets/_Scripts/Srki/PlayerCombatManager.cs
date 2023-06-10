@@ -47,7 +47,7 @@ public class PlayerCombatManager : Damageable
         DeathEvent?.Invoke();
 
         // Deactivate player
-
+        gameObject.SetActive(false);
 
         // Activate game lost UI
         
