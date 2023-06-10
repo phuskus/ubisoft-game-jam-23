@@ -270,11 +270,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09f7ad0e30f94b4d863c5b4eec8b035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Coords:
+    x: 0
+    y: 0
   obstaclePostions: []
   obstaclePrefabs: []
   enemyPrefab: {fileID: 7475908224119191665, guid: 543c612c87e8b484ba1dd09b014fe666,
     type: 3}
   enemies: []
+  BlockCleared: 0
   passageBlockers:
   - {fileID: 6614567899722666491}
   - {fileID: 629963259876763148}
@@ -330,7 +334,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 20, y: 1, z: 20}
+  m_Size: {x: 16, y: 1, z: 16}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2042869235089184697
 GameObject:
@@ -345,7 +349,6 @@ GameObject:
   - component: {fileID: 2004678749501277132}
   - component: {fileID: 1173667385692995268}
   - component: {fileID: 6614567899722666491}
-  - component: {fileID: 3718415474456244304}
   m_Layer: 8
   m_Name: NorthPassage
   m_TagString: Untagged
@@ -440,18 +443,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &6614567899722666491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042869235089184697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df59ec8ae8df22e46a55c9dfe8316f92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3718415474456244304
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -581,7 +572,6 @@ GameObject:
   - component: {fileID: 2320263077838448729}
   - component: {fileID: 8925598919768524736}
   - component: {fileID: 4620399285353173338}
-  - component: {fileID: 3616732003384411582}
   m_Layer: 8
   m_Name: SouthPassage
   m_TagString: Untagged
@@ -676,18 +666,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &4620399285353173338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3335707427783440317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df59ec8ae8df22e46a55c9dfe8316f92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3616732003384411582
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1027,7 +1005,6 @@ GameObject:
   - component: {fileID: 96954173068775924}
   - component: {fileID: 4694005004537046099}
   - component: {fileID: 8292872900720167839}
-  - component: {fileID: 2043530468760736420}
   m_Layer: 8
   m_Name: WestPassage
   m_TagString: Untagged
@@ -1122,18 +1099,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8292872900720167839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6717993545303213902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df59ec8ae8df22e46a55c9dfe8316f92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2043530468760736420
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1263,7 +1228,6 @@ GameObject:
   - component: {fileID: 6438652038168556658}
   - component: {fileID: 5523471072691360124}
   - component: {fileID: 629963259876763148}
-  - component: {fileID: 4016585742958598397}
   m_Layer: 8
   m_Name: EastPassage
   m_TagString: Untagged
@@ -1358,18 +1322,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &629963259876763148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7454234813487830830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df59ec8ae8df22e46a55c9dfe8316f92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4016585742958598397
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

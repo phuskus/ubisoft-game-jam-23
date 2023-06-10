@@ -5,34 +5,14 @@ using DG.Tweening;
 
 public class BlockPassage : MonoBehaviour
 {
-    private int _playerLayer;
-    public bool Triggered { get; set; }
-    private GridBlock gridBlock;    // The current segment
+    private bool open = false;
 
-    private void Start()
+    public void SetOpenState(bool state)
     {
-        _playerLayer = LayerMask.NameToLayer("Player");
-
-        gridBlock = GetComponentInParent<GridBlock>();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == _playerLayer
-            && gridBlock.BlockCleared // and segment is cleared
-            )
-        {
-            Triggered = true;
-        }
-    }
-
-    public void OpenPassage()
-    {
-        transform.DOMoveY(transform.position.y - 1.01f, 0.5f);
-    }
-
-    public void ClosePassage()
-    {
-        transform.DOMoveY(transform.position.y + 1.01f, 0.5f);
+        if (open == state)
+            return;
+        open = state;
+        float modifier = state ? -1 : 1;
+        transform.DOMoveY(transform.position.y + modifier * 1.01f, 0.5f);
     }
 }

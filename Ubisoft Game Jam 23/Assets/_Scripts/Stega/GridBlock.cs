@@ -1,10 +1,21 @@
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GridBlock : MonoBehaviour
 {
+    public static readonly int2[] DIRECTIONS =
+    {
+        new(0, 1),
+        new(0, -1),
+        new(1, 0),
+        new(-1, 0),
+    };
+    
     private int _playerLayer;
-    public bool Triggered { get; set; }
+
+    public int2 Coords;
 
     [SerializeField] private List<Transform> obstaclePostions = new();
     [Space(10)]
@@ -16,9 +27,8 @@ public class GridBlock : MonoBehaviour
 
     [Space(10)]
     [SerializeField] private List<Enemy> enemies = new();
-    //private int enemyDeathCounter;
 
-    public bool BlockCleared { get; private set; }
+    public bool BlockCleared;
 
     [Space(10)]
     [Header("Passage Blockers")]
@@ -59,7 +69,7 @@ public class GridBlock : MonoBehaviour
 
         for (int i = 0; i < enemiesNumber; i++)
         {
-            Vector3 randomPosition = new Vector3( Random.Range(-8, 9), 0, Random.Range(-8, 9));
+            Vector3 randomPosition = transform.position + new Vector3(Random.Range(-8, 9), 0, Random.Range(-8, 9));
 
             Enemy enemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
 
@@ -80,39 +90,26 @@ public class GridBlock : MonoBehaviour
         if(!haveAliveEnemies)
         {
             BlockCleared = true;
-
-            // When all enemies are cleared -> activate ramp
-            foreach (BlockPassage passage in passageBlockers)
-            {
-                // Open -> Move animation
-                passage.OpenPassage();
-            }
+            OpenAllValidDoors();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == _playerLayer
-            )
+        if (BlockCleared)
+            return;
+        
+        if (other.gameObject.layer == _playerLayer)
         {
-            // Activate all the remaining enemies
-            foreach (Enemy enemy in enemies)
-            {
-                if (enemy.IsAlive)
-                {
-                    enemy.gameObject.SetActive(true);
-                }
-            }
-
-            Triggered = true;
+            Debug.Log($"ENTER {gameObject.name}");
+            ChangeEnemyActiveStateTo(true);
+            CloseAllDoors();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == _playerLayer
-            && Triggered
-                )
+        if (other.gameObject.layer == _playerLayer)
         {
             // When leaving the room, check if there are any enemies alive
             // and disable them
@@ -124,9 +121,11 @@ public class GridBlock : MonoBehaviour
     {
         foreach (Enemy enemy in enemies)
         {
-            if (enemy.IsAlive != isActive)
+            if (enemy.IsAlive)
             {
                 enemy.gameObject.SetActive(isActive);
+                if (isActive)
+                    enemy.PlayAppearAnimation();
             }
         }
     }
@@ -139,5 +138,49 @@ public class GridBlock : MonoBehaviour
     private void OnDisable()
     {
         EventManager.EnemyDeathEvent -= CheckEnemyDeaths;
+    }
+
+    public void SetPassageOpenState(int2 side, bool state)
+    {
+        // north, east, south, west
+        if (side.x == 0 && side.y == 1)
+        {
+            passageBlockers[0].SetOpenState(state);
+        }
+        
+        if (side.x == 1 && side.y == 0)
+        {
+            passageBlockers[1].SetOpenState(state);
+        }
+        
+        if (side.x == 0 && side.y == -1)
+        {
+            passageBlockers[2].SetOpenState(state);
+        }
+        
+        if (side.x == -1 && side.y == 0)
+        {
+            passageBlockers[3].SetOpenState(state);
+        }
+    }
+
+    public void CloseAllDoors()
+    {
+        foreach (BlockPassage p in passageBlockers)
+        {
+            p.SetOpenState(false);
+        }
+    }
+
+    public void OpenAllValidDoors()
+    {
+        foreach (int2 dir in DIRECTIONS)
+        {
+            int2 pos = Coords + dir;
+            if (DungeonLevelManager.BlockCoords.Contains(pos))
+            {
+                SetPassageOpenState(dir, true);
+            }
+        }
     }
 }

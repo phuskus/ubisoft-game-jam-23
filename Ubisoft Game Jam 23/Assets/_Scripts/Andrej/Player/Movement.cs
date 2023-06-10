@@ -93,7 +93,7 @@ public class Movement : SingletonMono<Movement>
             currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, Player.Settings.KnockBackFade * Time.deltaTime);
             yield return null;
         }
-        Debug.Log("kita");
+        
         PlayerHit = false;
     }
 }

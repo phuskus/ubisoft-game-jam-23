@@ -9,7 +9,8 @@ using Random = UnityEngine.Random;
 public class DungeonLevelManager : MonoBehaviour
 {
     public static DungeonLevelManager I { get; private set; }
-    public static int RoomCount = 3;
+    public static int RoomCount = 10;
+    public static List<int2> BlockCoords;
     
     [SerializeField] private GridBlock gridBlockPrefab;
     [SerializeField] private GridBlock gridBlockEndPrefab;
@@ -44,31 +45,33 @@ public class DungeonLevelManager : MonoBehaviour
         {
             Destroy(o.gameObject);
         }
-        
-        int2[] directions =
-        {
-            new(0, 1),
-            new(0, -1),
-            new(1, 0),
-            new(-1, 0),
-        };
 
+        BlockCoords = new List<int2>();
+
+        List<GridBlock> blocks = new List<GridBlock>();
+        
         GridBlock firstBlock = Instantiate(gridBlockPrefab, Vector3.zero, Quaternion.identity).GetComponent<GridBlock>();
+        firstBlock.gameObject.name = "Grid_Block_First";
+        firstBlock.BlockCleared = true;
+        firstBlock.Coords = int2.zero;
+        
+        BlockCoords.Add(int2.zero);
+        blocks.Add(firstBlock);
+        
         Vector3 gridBlockSize = new Vector3(20, 0, 20);
         
         int2 currentPoint = int2.zero;
-        List<int2> previousPoints = new() { currentPoint };
         for (int i = 0; i < RoomCount - 1; i++)
         {
-            int2 dir;
+            int2 dir = default;
             int2 newPoint;
-            int idx = Random.Range(0, directions.Length);
+            int idx = Random.Range(0, GridBlock.DIRECTIONS.Length);
             bool found = false;
-            for (int j = 0; j < directions.Length; j++)
+            for (int j = 0; j < GridBlock.DIRECTIONS.Length; j++)
             {
-                dir = directions[idx];
+                dir = GridBlock.DIRECTIONS[idx];
                 newPoint = currentPoint + dir;
-                if (!previousPoints.Exists(p => p.x == newPoint.x && p.y == newPoint.y))
+                if (!BlockCoords.Exists(p => p.x == newPoint.x && p.y == newPoint.y))
                 {
                     currentPoint = newPoint;
                     found = true;
@@ -76,7 +79,7 @@ public class DungeonLevelManager : MonoBehaviour
                 }
 
                 idx++;
-                if (idx >= directions.Length)
+                if (idx >= GridBlock.DIRECTIONS.Length)
                 {
                     idx = 0;
                 }
@@ -87,11 +90,25 @@ public class DungeonLevelManager : MonoBehaviour
                 break;
             }
 
-            previousPoints.Add(currentPoint);
+            BlockCoords.Add(currentPoint);
 
             Vector3 position = new Vector3(gridBlockSize.x * currentPoint.x, 0, gridBlockSize.z * currentPoint.y);
             GridBlock prefab = i == RoomCount - 2 ? gridBlockEndPrefab : gridBlockPrefab;
             GridBlock block = Instantiate(prefab, position, Quaternion.identity).GetComponent<GridBlock>();
+            block.Coords = currentPoint;
+            blocks.Add(block);
+            block.gameObject.name = $"Grid_Block_{position}";
+            
+            if (i == 0)
+            {
+                block.SetPassageOpenState(-dir, true);
+                firstBlock.SetPassageOpenState(dir, true);
+            }
+        }
+
+        foreach (GridBlock b in blocks)
+        {
+            b.OpenAllValidDoors();
         }
     }
 }

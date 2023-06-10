@@ -43,14 +43,14 @@ public class Projectile : MonoBehaviour
 
             // Spawn particles
 
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
 
         if (other.gameObject.layer == WallLayer)
         {
             // Spawn particles
 
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
