@@ -7,18 +7,18 @@ using System;
 /// </summary>
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof(Animator))]
 public class EnemyHealth : Damageable
 {
     public int Health { get => health; set => health = value; } // property of inherited field
 
     [SerializeField] private EnemyMovement Movement;
-    [SerializeField] private Animator Animator;
+
+    private Enemy enemy;
 
     private void Start()
     {
         Movement = GetComponent<EnemyMovement>();
-        Animator = GetComponent<Animator>();
+        enemy = GetComponent<Enemy>();
 
         //if (healthBar == null) healthBar = GetComponentInChildren<Slider>();
         //healthBar.maxValue = healthData.MaxHealth;
@@ -39,10 +39,6 @@ public class EnemyHealth : Damageable
         // spawn random hit particles
         int x = UnityEngine.Random.Range(0, ParticleManager.Instance.HitParticles.Count);
         Instantiate(ParticleManager.Instance.HitParticles[x], transform.position + new Vector3(0, 1, 0), Quaternion.identity, transform);
-
-        //Animator.ResetTrigger("Hit");
-        //Animator.SetLayerWeight(1, (float)Damage / MaxDamagePainThreshold);
-        //Animator.SetTrigger("Hit");
     }
 
     public override void HandleDeath()
@@ -51,9 +47,9 @@ public class EnemyHealth : Damageable
         ParticleManager.Instance.SpawnEnemyDeathParticle(transform);
 
         Movement.StopMoving();
-        Animator.SetInteger("Movement", -1);
-        Animator.applyRootMotion = true;
-        Animator.Play("Dying");
+        enemy.Animator.SetInteger("Movement", -1);
+        enemy.Animator.applyRootMotion = true;
+        enemy.Animator.Play("Dying");
 
         // event comes from inherited class
         DeathEvent?.Invoke();
