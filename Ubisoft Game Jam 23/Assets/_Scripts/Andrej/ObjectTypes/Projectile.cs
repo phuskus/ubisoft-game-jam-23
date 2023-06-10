@@ -38,7 +38,6 @@ public class Projectile : MonoBehaviour
             //damageable.TakeDamage(damageValue);
             if (other.gameObject.TryGetComponent(out Damageable damageable))
             {
-                print(damageable);
                 damageable.TakeDamage(damageValue);
             }
 

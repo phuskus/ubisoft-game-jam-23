@@ -66,18 +66,16 @@ public class GridBlock : MonoBehaviour
 
             // add enemy to list
             enemies.Add(enemy);
-
-            // listen to the enemy's death event
-            enemy.GetComponent<EnemyHealth>().DeathEvent += CountEnemyDeaths;
         }
     }
 
-    private void CountEnemyDeaths()
+    private void CheckEnemyDeaths()
     {
-        enemyDeathCounter++;
-
-        if (enemyDeathCounter == enemies.Count)
+        for (int i = 0; i < enemies.Count; i++)
         {
+            if (enemies[i].IsAlive) return;
+
+            // else
             BlockCleared = true;
 
             // When all enemies are cleared -> activate ramp
@@ -94,7 +92,6 @@ public class GridBlock : MonoBehaviour
         if (other.gameObject.layer == _playerLayer
             )
         {
-            print("da");
             // Activate all the remaining enemies
             foreach (Enemy enemy in enemies)
             {
@@ -131,12 +128,13 @@ public class GridBlock : MonoBehaviour
         }
     }
 
-    //private void OnDisable()
-    //{
-    //    for (int i = 0; i < enemies.Count; i++)
-    //    {
-    //        // listen to the enemy's death event
-    //        enemies[i].GetComponent<EnemyHealth>().DeathEvent -= CountEnemyDeaths;
-    //    }
-    //}
+    private void OnEnable()
+    {
+        EventManager.EnemyDeathEvent += CheckEnemyDeaths;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.EnemyDeathEvent -= CheckEnemyDeaths;
+    }
 }

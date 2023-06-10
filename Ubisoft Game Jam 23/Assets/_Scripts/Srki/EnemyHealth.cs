@@ -55,7 +55,7 @@ public class EnemyHealth : Damageable
         //enemy.Animator.Play("Dying");
 
         // event comes from inherited class
-        DeathEvent?.Invoke();
+        EventManager.EnemyDeathEvent?.Invoke();
 
         gameObject.SetActive(false);
     }
