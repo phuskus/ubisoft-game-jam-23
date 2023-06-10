@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     public EnemyHealth Health;
     public EnemyMovement Movement;
 
+    [SerializeField] private Animator animator;
+    public Animator Animator { get => animator; set => animator = value; }
+
     [Space(10)]
     [Header("Enemy SOs")]
     [SerializeField] private float agroRange = 20f;
@@ -29,7 +32,13 @@ public class Enemy : MonoBehaviour
     {
         Health = GetComponent<EnemyHealth>();
         Movement = GetComponent<EnemyMovement>();
+        animator = GetComponentInChildren<Animator>();
     }
+
+    //public void SetAnimatorParameter(string parameter, int value)
+    //{
+    //    animator.SetInteger(parameter, value);
+    //}
 
     ////private void Die(Vector3 Position)
     ////{

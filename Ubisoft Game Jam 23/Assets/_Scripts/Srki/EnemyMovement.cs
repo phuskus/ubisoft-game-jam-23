@@ -7,13 +7,10 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     private Enemy enemy;
-    private Animator Animator;
 
     [SerializeField] private float StillDelay = 1f;
     private LookAtIK LookAt;
     private NavMeshAgent Agent;
-
-    //private const string IsWalking = "IsWalking";
 
     private static NavMeshTriangulation Triangulation;
 
@@ -22,7 +19,6 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
-        Animator = GetComponent<Animator>();
         Agent = GetComponent<NavMeshAgent>();
         LookAt = GetComponent<LookAtIK>();
         if (Triangulation.vertices == null || Triangulation.vertices.Length == 0)
@@ -59,17 +55,23 @@ public class EnemyMovement : MonoBehaviour
             Agent.destination = playerCollider[0].transform.position;
 
             // run towards the player
-            Animator.SetInteger("Movement", 2); // 2 is for running
+            enemy.Animator.SetInteger("Movement", 2); // 2 is for running
             Agent.speed = enemy.RunSpeed;
 
             if (Vector3.Distance(transform.position, playerCollider[0].transform.position) <= enemy.AttackRange)
             {
-                // attack animation
-                Animator.Play("Attacking");
+                // Attack animation
+                enemy.Animator.Play("Cube Attack");
 
-                // prevent agent from moving
-                this.enabled = false;
+                // Prevent agent from moving
+                Agent.isStopped = true;
+
+                //this.enabled = false;
                 //Agent.speed = 0;
+            }
+            else
+            {
+                Agent.isStopped = false;
             }
         }
     }
@@ -89,9 +91,10 @@ public class EnemyMovement : MonoBehaviour
                 ));
 
             Agent.speed = enemy.WalkSpeed;
-            Animator.SetInteger("Movement", 1); // 1 is for walking
+            enemy.Animator.SetInteger("Movement", 1); // 1 is for walking
 
             yield return new WaitUntil(() => Agent.remainingDistance <= Agent.stoppingDistance);
+            enemy.Animator.SetInteger("Movement", 0); // 0 is for idle
             yield return wait;
         }
     }
@@ -103,12 +106,12 @@ public class EnemyMovement : MonoBehaviour
         Agent.enabled = false;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, enemy.AgroRange);
-        Gizmos.DrawWireSphere(transform.position, enemy.AttackRange);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(transform.position, enemy.AgroRange);
+    //    Gizmos.DrawWireSphere(transform.position, enemy.AttackRange);
+    //}
 
     // called as animation event
     private void EnableMovement()
