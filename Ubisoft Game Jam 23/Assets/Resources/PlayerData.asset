@@ -15,7 +15,7 @@ MonoBehaviour:
   playerStamina: 2
   playerMaxStamina: 2
   staminaDepletionSpeed: 1
-  playerWalkSpeed: 10
+  playerWalkSpeed: 5
   playerRunSpeed: 30
   TurnRate: 20
   Acceleration: 10
