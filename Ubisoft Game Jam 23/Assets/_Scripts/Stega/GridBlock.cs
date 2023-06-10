@@ -98,7 +98,7 @@ public class GridBlock : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (BlockCleared)
+        if (blockIsActive || BlockCleared)
             return;
         
         if (other.gameObject.layer == _playerLayer)
