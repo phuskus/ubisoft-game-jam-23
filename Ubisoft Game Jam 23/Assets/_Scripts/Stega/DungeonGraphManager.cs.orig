@@ -10,43 +10,31 @@ public class DungeonGraphManager : MonoBehaviour
 {
     private static DungeonGraphManager I;
     
+<<<<<<< HEAD
+    public static int CurrentLevel = 0;
+    public static int CurrentDungeonDifficulty = -1;
+    public UnityEvent OnVictory;
+    public UnityEvent OnDefeat;
+=======
     private const int graphWidth = 3;
     private const int graphHeight = 5;
-    
-    public static int CurrentDungeonDifficulty = -1;
+>>>>>>> fef08e6 (Implement procedural generation for dungeon graph)
     
     [SerializeField] private GraphNode graphNodePrefab;
     [SerializeField] private Transform startNodeAnchor;
     [SerializeField] private Canvas canvas;
     
     public static int CurrentLevel;
+    private static int currentDungeonDifficulty;
     private static bool[][] grid = null;
 
     private void Start()
     {
-        // Reset();
         InstantiateGraphView();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Reset();
-            InstantiateGraphView();
-        }
     }
 
     private void InstantiateGraphView()
     {
-        foreach (Transform child in canvas.transform)
-        {
-            if (child.GetComponent<GraphNode>() != null || child.GetComponent<GraphLine>() != null)
-            {
-                Destroy(child.gameObject);
-            }
-        }
-        
         Rect nodeRect = graphNodePrefab.GetComponent<RectTransform>().rect;
         float nodeHeight = nodeRect.height;
         float nodeWidth = nodeRect.width;
@@ -62,13 +50,13 @@ public class DungeonGraphManager : MonoBehaviour
         {
             for (int col = 0; col < graphWidth; col++)
             {
-                if (!grid[col][row])
+                if (!grid[row][col])
                 {
                     gridAsNodes[row].Add(null);
                     continue;
                 }
 
-                Vector3 position = startNodeAnchor.position + Vector3.up * nodeHeight * 2f * (row + 1);
+                Vector3 position = startNodeAnchor.position + Vector3.up * nodeHeight * 1.5f * (row + 1);
                 position.x = leftXStart + col * nodeWidth * 5f;
                 GraphNode node = MakeGraphNode(position, row);
                 node.gameObject.name = $"Node_{row}_{col}";
@@ -79,7 +67,7 @@ public class DungeonGraphManager : MonoBehaviour
         GraphNode startNode = MakeGraphNode(startNodeAnchor.position, -1);
         startNode.SetNumberOfHops(-1);
         startNode.gameObject.name = "StartNode";
-        GraphNode endNode = MakeGraphNode(startNodeAnchor.position + Vector3.up * nodeHeight * 2f * (graphHeight + 1), graphHeight);
+        GraphNode endNode = MakeGraphNode(startNodeAnchor.position + Vector3.up * nodeHeight * 1.5f * (graphHeight + 1), graphHeight);
         endNode.SetNumberOfHops(0);
         endNode.gameObject.name = "EndNode";
         
@@ -104,7 +92,7 @@ public class DungeonGraphManager : MonoBehaviour
                 previousNodeRow = row;
             }
             
-            // previous.SetNumberOfHops(previousNodeRow+1);
+            previous.SetNumberOfHops(previousNodeRow+1);
             startNode.ConnectedNodes.Add(previous);
         }
     }
@@ -119,34 +107,34 @@ public class DungeonGraphManager : MonoBehaviour
     public static void Reset()
     {
         CurrentLevel = 0;
-        CurrentDungeonDifficulty = -1;
+        currentDungeonDifficulty = -1;
         GenerateGraph();
     }
 
     private static void GenerateGraph()
     {
-        grid = new bool[graphWidth][];
-        for (int col = 0; col < graphWidth; col++)
+        grid = new bool[graphHeight][];
+        for (int row = 0; row < graphHeight; row++)
         {
-            grid[col] = new bool[graphHeight];
+            grid[row] = new bool[graphWidth];
             bool atLeastOne = false;
-            for (int row = 0; row < graphHeight; row++)
+            for (int col = 0; col < graphWidth; col++)
             {
                 float rand = Random.value;
-                if (rand < 0.5f)
+                if (rand < 0.75f)
                 {
-                    grid[col][row] = false;
+                    grid[row][col] = false;
                 }
                 else
                 {
-                    grid[col][row] = true;
+                    grid[row][col] = true;
                     atLeastOne = true;
                 }
             }
 
             if (!atLeastOne)
             {
-                grid[col][Random.Range(0, graphWidth)] = true;
+                grid[row][Random.Range(0, graphWidth)] = true;
             }
         }
     }
@@ -165,7 +153,12 @@ public class DungeonGraphManager : MonoBehaviour
             Debug.Log("Victory!");
             GameFlowManager.OnVictory();
         }
+<<<<<<< HEAD
         CurrentLevel += CurrentDungeonDifficulty;
+=======
+        
+        CurrentLevel += currentDungeonDifficulty;
+>>>>>>> fef08e6 (Implement procedural generation for dungeon graph)
         SceneManager.LoadScene("DungeonGraph");
     }
 }
