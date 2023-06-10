@@ -60,12 +60,18 @@ public class EnemyMovement : MonoBehaviour
 
             if (Vector3.Distance(transform.position, playerCollider[0].transform.position) <= enemy.AttackRange)
             {
-                // attack animation
-                //Animator.Play("Attacking");
+                // Attack animation
+                enemy.Animator.Play("Cube Attack");
 
-                // prevent agent from moving
-                this.enabled = false;
+                // Prevent agent from moving
+                Agent.isStopped = true;
+
+                //this.enabled = false;
                 //Agent.speed = 0;
+            }
+            else
+            {
+                Agent.isStopped = false;
             }
         }
     }
