@@ -9,6 +9,7 @@ public class Player : SingletonMono<Player>
     public static Movement Movement;
     public static CursorObject CursorObject;
     public static PlayerData Settings;
+    public static PlayerGun Gun;
 
     private void Start()
     {
@@ -16,5 +17,6 @@ public class Player : SingletonMono<Player>
         Movement = Movement.Instance;
         CursorObject = CursorObject.Instance;
         Settings = PlayerData.Instance;
+        Gun = PlayerGun.Instance;
     }
 }

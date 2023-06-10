@@ -19,9 +19,17 @@ MonoBehaviour:
   playerRunSpeed: 30
   TurnRate: 20
   Acceleration: 10
+  ReloadTime: 0.25
+  ProjectileSpeedStart: 18
+  ProjectileSpeedEnd: 6
+  ProjectileWeight: 25
   cameraExtendRadius: 5
   CameraHeadDistance: 10
   CameraFollowSpeed: 15
   GroundLayer:
     serializedVersion: 2
     m_Bits: 128
+  WallLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  WallLayer: 8

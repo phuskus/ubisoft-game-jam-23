@@ -18,10 +18,25 @@ public class PlayerData : SingletonSO<PlayerData>
     public float TurnRate = 20f;
     public float Acceleration = 1f;
 
+    public float ReloadTime = 0.25f;
+    public float ProjectileSpeedStart = 15f;
+    public float ProjectileSpeedEnd = 7.5f;
+    public float ProjectileWeight = 2f;
+
     [Header(">>> Camera Control")]
 
     public float cameraExtendRadius = 10f;
     public float CameraHeadDistance = 10f;
     public float CameraFollowSpeed = 15f;
+
+    [Header(">>> Camera Control")]
+
     public LayerMask GroundLayer;
+    public LayerMask WallLayerMask;
+    public int WallLayer;
+
+    private void OnValidate()
+    {
+        WallLayer = LayerMask.NameToLayer("Walls");
+    }
 }
