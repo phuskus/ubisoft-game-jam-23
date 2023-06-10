@@ -10,6 +10,7 @@ public class Player : SingletonMono<Player>
     public static CursorObject CursorObject;
     public static PlayerData Settings;
     public static PlayerGun Gun;
+    public static PlayerMesh Mesh;
 
     private void Start()
     {
@@ -18,5 +19,6 @@ public class Player : SingletonMono<Player>
         CursorObject = CursorObject.Instance;
         Settings = PlayerData.Instance;
         Gun = PlayerGun.Instance;
+        Mesh = GetComponentInChildren<PlayerMesh>();
     }
 }
