@@ -78,8 +78,6 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator Roam()
     {
-        WaitForSeconds wait = new WaitForSeconds(StillDelay);
-
         while (enabled)
         {
             int index = Random.Range(1, Triangulation.vertices.Length);
@@ -90,12 +88,18 @@ public class EnemyMovement : MonoBehaviour
                     Random.value
                 ));
 
+            print(Agent.remainingDistance);
+
+            if (Agent.remainingDistance <= Agent.stoppingDistance)
+            {
+                Agent.speed = 0;
+                enemy.Animator.SetInteger("Movement", 0); // 0 is for idle
+                yield return new WaitForSeconds(StillDelay);
+            }
+
             Agent.speed = enemy.WalkSpeed;
             enemy.Animator.SetInteger("Movement", 1); // 1 is for walking
-
             yield return new WaitUntil(() => Agent.remainingDistance <= Agent.stoppingDistance);
-            enemy.Animator.SetInteger("Movement", 0); // 0 is for idle
-            yield return wait;
         }
     }
 
@@ -117,5 +121,5 @@ public class EnemyMovement : MonoBehaviour
     private void EnableMovement()
     {
         this.enabled = true;
-    }    
+    }
 }
