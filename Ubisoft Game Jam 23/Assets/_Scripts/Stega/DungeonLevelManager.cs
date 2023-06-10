@@ -54,7 +54,7 @@ public class DungeonLevelManager : MonoBehaviour
         };
 
         GridBlock firstBlock = Instantiate(gridBlockPrefab, Vector3.zero, Quaternion.identity).GetComponent<GridBlock>();
-        Vector3 gridBlockSize = new Vector3(10, 0, 10);
+        Vector3 gridBlockSize = new Vector3(20, 0, 20);
         
         int2 currentPoint = int2.zero;
         List<int2> previousPoints = new() { currentPoint };
