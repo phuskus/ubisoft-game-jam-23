@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class GraphNode : MonoBehaviour
 	[SerializeField] private GraphLine linePrefab;
 	
 	public List<GraphNode> ConnectedNodes = new List<GraphNode>();
+	public int Row, Col;
 	private RectTransform rectTransform;
 	private Button button;
 	
@@ -38,18 +40,18 @@ public class GraphNode : MonoBehaviour
 		{
 			GraphLine line = Instantiate(linePrefab, transform.parent).GetComponent<GraphLine>();
 			line.transform.SetAsFirstSibling();
-			line.SetPoints(rectTransform.position, node.transform.position);
+			line.SetPoints(transform.position, node.transform.position);
 		}
 	}
 
 	private void OnClick()
 	{
-		DungeonGraphManager.LoadDungeon(numberOfHops);
+		DungeonGraphManager.LoadDungeon(this);
 	}
 
 	private void Update()
 	{
-		button.interactable = DungeonGraphManager.CurrentLevel == MyLevel;
+		button.interactable = DungeonGraphManager.IsNodeSelectable(this);
 	}
 
 	public void SetNumberOfHops(int newNumber)
@@ -73,4 +75,6 @@ public class GraphNode : MonoBehaviour
 			textNumberOfHops.text = $"{newNumber}";
 		}
 	}
+
+	public int GetNumberOfHops() => numberOfHops;
 }

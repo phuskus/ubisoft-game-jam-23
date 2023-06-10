@@ -16,6 +16,6 @@ public class GraphLine : MonoBehaviour
     {
         rectTransform.position = p1;
         rectTransform.up = (p2 - p1);
-        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (p2 - p1).magnitude);
+        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 80);
     }
 }

@@ -20,7 +20,12 @@ public class DungeonGraphManager : MonoBehaviour
     [SerializeField] private Canvas canvas;
     
     public static int CurrentLevel;
+    
     private static bool[][] grid = null;
+    private static List<List<GraphNode>> gridAsNodes;
+    private static GraphNode startNode, endNode;
+    public static int lastCompletedNodeRow;
+    public static int lastCompletedNodeCol;
 
     private void Start()
     {
@@ -28,14 +33,14 @@ public class DungeonGraphManager : MonoBehaviour
         InstantiateGraphView();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Reset();
-            InstantiateGraphView();
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Space))
+    //     {
+    //         Reset();
+    //         InstantiateGraphView();
+    //     }
+    // }
 
     private void InstantiateGraphView()
     {
@@ -50,9 +55,9 @@ public class DungeonGraphManager : MonoBehaviour
         Rect nodeRect = graphNodePrefab.GetComponent<RectTransform>().rect;
         float nodeHeight = nodeRect.height;
         float nodeWidth = nodeRect.width;
-        float leftXStart = startNodeAnchor.position.x - (graphWidth / 2) * nodeWidth * 5f;
+        float leftXStart = startNodeAnchor.position.x - (graphWidth / 2) * nodeWidth * 4f;
 
-        List<List<GraphNode>> gridAsNodes = new();
+        gridAsNodes = new();
         for (int i = 0; i < graphHeight; i++)
         {
             gridAsNodes.Add(new());
@@ -69,26 +74,28 @@ public class DungeonGraphManager : MonoBehaviour
                 }
 
                 Vector3 position = startNodeAnchor.position + Vector3.up * nodeHeight * 2f * (row + 1);
-                position.x = leftXStart + col * nodeWidth * 5f;
-                GraphNode node = MakeGraphNode(position, row);
+                position.x = leftXStart + col * nodeWidth * 4f;
+                GraphNode node = MakeGraphNode(position, row, row, col);
                 node.gameObject.name = $"Node_{row}_{col}";
                 gridAsNodes[row].Add(node);
             }
         }
 
-        GraphNode startNode = MakeGraphNode(startNodeAnchor.position, -1);
+        startNode = MakeGraphNode(startNodeAnchor.position, -1, -1, -1);
         startNode.SetNumberOfHops(-1);
         startNode.gameObject.name = "StartNode";
-        GraphNode endNode = MakeGraphNode(startNodeAnchor.position + Vector3.up * nodeHeight * 2f * (graphHeight + 1), graphHeight);
+        
+        endNode = MakeGraphNode(startNodeAnchor.position + Vector3.up * nodeHeight * 2f * (graphHeight + 1), graphHeight, graphHeight, graphHeight);
         endNode.SetNumberOfHops(0);
         endNode.gameObject.name = "EndNode";
         
         for (int col = 0; col < graphWidth; col++)
         {
             int emptyCount = 0;
-            GraphNode previous = endNode;
-            int previousNodeRow = graphHeight;
-            for (int row = graphHeight-1; row >= 0; row--)
+            GraphNode firstNode = null;
+            GraphNode lastNode = null;
+            int leftToDistribute = graphHeight;
+            for (int row = 0; row < graphHeight; row++)
             {
                 GraphNode node = gridAsNodes[row][col];
                 if (node == null)
@@ -96,23 +103,42 @@ public class DungeonGraphManager : MonoBehaviour
                     emptyCount++;
                     continue;
                 }
+
+                if (firstNode == null)
+                {
+                    firstNode = node;
+                }
+
+                lastNode = node;
                 
-                node.ConnectedNodes.Add(previous);
                 node.SetNumberOfHops(emptyCount+1);
+                leftToDistribute -= emptyCount + 1;
                 emptyCount = 0;
-                previous = node;
-                previousNodeRow = row;
             }
             
-            // previous.SetNumberOfHops(previousNodeRow+1);
-            startNode.ConnectedNodes.Add(previous);
+            lastNode!.SetNumberOfHops(lastNode.GetNumberOfHops() + leftToDistribute);
+            startNode.ConnectedNodes.Add(firstNode);
+            lastNode!.ConnectedNodes.Add(endNode);
+
+            lastNode = endNode;
+            for (int row = graphHeight - 1; row >= 0; row--)
+            {
+                GraphNode node = gridAsNodes[row][col];
+                if (node == null)
+                    continue;
+                
+                node.ConnectedNodes.Add(lastNode);
+                lastNode = node;
+            }
         }
     }
 
-    private GraphNode MakeGraphNode(Vector3 position, int level)
+    private GraphNode MakeGraphNode(Vector3 position, int level, int row, int col)
     {
         GraphNode node = Instantiate(graphNodePrefab, position, Quaternion.identity, canvas.transform);
         node.MyLevel = level;
+        node.Row = row;
+        node.Col = col;
         return node;
     }
 
@@ -120,6 +146,8 @@ public class DungeonGraphManager : MonoBehaviour
     {
         CurrentLevel = 0;
         CurrentDungeonDifficulty = -1;
+        lastCompletedNodeRow = -1;
+        lastCompletedNodeCol = -1;
         GenerateGraph();
     }
 
@@ -149,11 +177,18 @@ public class DungeonGraphManager : MonoBehaviour
                 grid[col][Random.Range(0, graphWidth)] = true;
             }
         }
+
+        lastCompletedNodeRow = -1;
+        lastCompletedNodeCol = -1;
     }
 
-    public static void LoadDungeon(int difficulty)
+    public static void LoadDungeon(GraphNode node)
     {
-        CurrentDungeonDifficulty = difficulty;
+        CurrentDungeonDifficulty = node.GetNumberOfHops();
+        if (node != endNode)
+        {
+            (lastCompletedNodeRow, lastCompletedNodeCol) = (node.Row, node.Col);
+        }
         SceneManager.LoadScene("DungeonLevel");
     }
 
@@ -164,8 +199,21 @@ public class DungeonGraphManager : MonoBehaviour
             // end game
             Debug.Log("Victory!");
             GameFlowManager.OnVictory();
+            return;
         }
+        
         CurrentLevel += CurrentDungeonDifficulty;
         SceneManager.LoadScene("DungeonGraph");
+    }
+
+    public static bool IsNodeSelectable(GraphNode node)
+    {
+        if (lastCompletedNodeCol == -1)
+        {
+            return startNode.ConnectedNodes.Contains(node);
+        }
+        
+        GraphNode lastCompletedNode = gridAsNodes[lastCompletedNodeRow][lastCompletedNodeCol];
+        return lastCompletedNode.ConnectedNodes.Contains(node);
     }
 }
