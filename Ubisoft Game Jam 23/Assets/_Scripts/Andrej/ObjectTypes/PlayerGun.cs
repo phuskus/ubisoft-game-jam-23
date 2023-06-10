@@ -5,5 +5,10 @@ using Zmijoguz;
 
 public class PlayerGun : SingletonMono<PlayerGun>
 {
-    
+    public PlayerGunParticles Particles;
+
+    private void Start()
+    {
+        Particles = GetComponentInChildren<PlayerGunParticles>();
+    }
 }
