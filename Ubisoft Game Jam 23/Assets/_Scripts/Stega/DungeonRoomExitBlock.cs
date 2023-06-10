@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DungeonRoomExitBlock : MonoBehaviour
 {
-    public void ExitDungeon()
+    private void OnTriggerEnter(Collider other)
     {
-        DungeonGraphManager.OnDungeonCompleted();
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            DungeonGraphManager.OnDungeonCompleted();
+        }
     }
 }

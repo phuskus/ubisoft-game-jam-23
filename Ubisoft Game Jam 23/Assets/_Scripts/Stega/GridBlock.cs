@@ -34,6 +34,8 @@ public class GridBlock : MonoBehaviour
     [Header("Passage Blockers")]
     [SerializeField] private List<BlockPassage> passageBlockers;
 
+    private bool blockIsActive;
+
     // Call for enabling of this script before the player enters the segment
     private void Start()
     {
@@ -101,7 +103,7 @@ public class GridBlock : MonoBehaviour
         
         if (other.gameObject.layer == _playerLayer)
         {
-            Debug.Log($"ENTER {gameObject.name}");
+            blockIsActive = true;
             ChangeEnemyActiveStateTo(true);
             CloseAllDoors();
         }
@@ -109,6 +111,11 @@ public class GridBlock : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (blockIsActive && !BlockCleared)
+            return;
+        
+        blockIsActive = false;
+        
         if (other.gameObject.layer == _playerLayer)
         {
             // When leaving the room, check if there are any enemies alive

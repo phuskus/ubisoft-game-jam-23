@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     private Vector3 mousePosition;
-    [SerializeField] private LayerMask layer;
-
     private Vector3 targetMousePosition;
 
     Ray ray;
@@ -15,8 +13,8 @@ public class PlayerLook : MonoBehaviour
     void Update()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-        if(groundPlane.Raycast(ray, out float hitDistance))
+
+        if (groundPlane.Raycast(ray, out float hitDistance))
         {
             Vector3 hit = ray.origin + ray.direction * hitDistance;
             
