@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 public class DungeonLevelManager : MonoBehaviour
 {
     public static DungeonLevelManager I { get; private set; }
-    public static int RoomCount = 10;
+    public static int RoomCount = 5;
     public static List<int2> BlockCoords;
     
     [SerializeField] private GridBlock gridBlockPrefab;
