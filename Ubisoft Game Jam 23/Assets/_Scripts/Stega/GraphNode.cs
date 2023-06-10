@@ -13,7 +13,7 @@ public class GraphNode : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI textNumberOfHops;
 	[SerializeField] private GraphLine linePrefab;
 	
-	public List<GraphNode> ConnectedNodes;
+	public List<GraphNode> ConnectedNodes = new List<GraphNode>();
 	private RectTransform rectTransform;
 	private Button button;
 	
@@ -25,7 +25,15 @@ public class GraphNode : MonoBehaviour
 		button.onClick.AddListener(OnClick);
 		
 		SetNumberOfHops(numberOfHops);
+	}
 
+	private void Start()
+	{
+		GenerateLines();
+	}
+
+	public void GenerateLines()
+	{
 		foreach (GraphNode node in ConnectedNodes)
 		{
 			GraphLine line = Instantiate(linePrefab, transform.parent).GetComponent<GraphLine>();
