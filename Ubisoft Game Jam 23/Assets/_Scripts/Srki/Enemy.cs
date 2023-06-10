@@ -1,3 +1,5 @@
+using System;
+using DG.Tweening;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -35,6 +37,12 @@ public class Enemy : MonoBehaviour
         Health = GetComponent<EnemyHealth>();
         Movement = GetComponent<EnemyMovement>();
         animator = GetComponentInChildren<Animator>();
+    }
+
+    public void PlayAppearAnimation()
+    { 
+        transform.localScale = Vector3.one * 0.01f;
+        transform.DOScale(Vector3.one, 0.5f);
     }
 
     //public void SetAnimatorParameter(string parameter, int value)
