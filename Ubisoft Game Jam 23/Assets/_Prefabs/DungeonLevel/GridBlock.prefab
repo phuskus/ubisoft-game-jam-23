@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2798895861733797840}
   - component: {fileID: 8444013195849713731}
   - component: {fileID: 744710794152722830}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 2493760715252605867}
   - component: {fileID: 2259856975511033371}
   - component: {fileID: 223029943249530656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ Transform:
   - {fileID: 8442065565927225630}
   - {fileID: 2622637329210268058}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2608053365862629899
 MonoBehaviour:
@@ -306,7 +306,7 @@ MonoBehaviour:
   enemySpawnPositions:
   - {fileID: 8442065565927225630}
   - {fileID: 2622637329210268058}
-  enemyPrefab: {fileID: 8410259282578657014, guid: 543c612c87e8b484ba1dd09b014fe666,
+  enemyPrefab: {fileID: 7475908224119191665, guid: 543c612c87e8b484ba1dd09b014fe666,
     type: 3}
   enemies: []
   passageBlockers:
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 8279725999002307660}
   - component: {fileID: 2004678749501277132}
   - component: {fileID: 1173667385692995268}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NorthPassage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 3555858379841195759}
   - component: {fileID: 7499911262241267349}
   - component: {fileID: 7999646884062834245}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 3544595224366026734}
   - component: {fileID: 2320263077838448729}
   - component: {fileID: 8925598919768524736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SouthPassage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -703,7 +703,7 @@ GameObject:
   - component: {fileID: 423017453315519341}
   - component: {fileID: 3714505128339550721}
   - component: {fileID: 1556536082067615097}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 8681542647272079571}
   - component: {fileID: 5869862781632114513}
   - component: {fileID: 4315739734449160667}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1018,7 +1018,7 @@ GameObject:
   - component: {fileID: 1195728541651874640}
   - component: {fileID: 96954173068775924}
   - component: {fileID: 4694005004537046099}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WestPassage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1123,7 +1123,7 @@ GameObject:
   - component: {fileID: 8052215701015297254}
   - component: {fileID: 671578244869410362}
   - component: {fileID: 3698751039502780370}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1228,7 +1228,7 @@ GameObject:
   - component: {fileID: 9910475526902523}
   - component: {fileID: 6438652038168556658}
   - component: {fileID: 5523471072691360124}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EastPassage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1333,7 +1333,7 @@ GameObject:
   - component: {fileID: 9064886618020004051}
   - component: {fileID: 6620996178946929657}
   - component: {fileID: 6311598888033102804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1438,7 +1438,7 @@ GameObject:
   - component: {fileID: 5543744524968151743}
   - component: {fileID: 8953132936596436338}
   - component: {fileID: 2535238314749427999}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -24,7 +24,7 @@ MonoBehaviour:
   ProjectileSpeedEnd: 6
   ProjectileWeight: 25
   cameraExtendRadius: 5
-  CameraHeadDistance: 10
+  CameraHeadDistance: 18.4
   CameraFollowSpeed: 15
   GroundLayer:
     serializedVersion: 2

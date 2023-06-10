@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8663924174501829908}
   - component: {fileID: 3031354909426522282}
   m_Layer: 0
-  m_Name: Projectile
+  m_Name: Player Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,3 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallLayer: 8
+  isPlayerProjectile: 1
+  damageValue: 1
