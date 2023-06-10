@@ -7,16 +7,22 @@ using UnityEngine.UI;
 
 public class GraphNode : MonoBehaviour
 {
+	public int MyLevel;
+	
 	[SerializeField] private int numberOfHops;
 	[SerializeField] private TextMeshProUGUI textNumberOfHops;
 	[SerializeField] private GraphLine linePrefab;
 	
 	public List<GraphNode> ConnectedNodes;
 	private RectTransform rectTransform;
+	private Button button;
 	
 	private void Awake()
 	{
 		rectTransform = GetComponent<RectTransform>();
+		button = GetComponent<Button>();
+
+		button.onClick.AddListener(OnClick);
 		
 		SetNumberOfHops(numberOfHops);
 
@@ -28,24 +34,34 @@ public class GraphNode : MonoBehaviour
 		}
 	}
 
+	private void OnClick()
+	{
+		DungeonGraphManager.HopLevels(numberOfHops);
+	}
+
+	private void Update()
+	{
+		button.interactable = DungeonGraphManager.CurrentLevel == MyLevel;
+	}
+
 	public void SetNumberOfHops(int newNumber)
 	{
 		numberOfHops = newNumber;
 		if (numberOfHops == -1)
 		{
 			// start node
-			GetComponent<Button>().enabled = false;
+			button.enabled = false;
 			textNumberOfHops.text = "S";
 		}
 		else if (numberOfHops == 0)
 		{
 			// finish, root node
-			GetComponent<Button>().enabled = true;
+			button.enabled = true;
 			textNumberOfHops.text = "R";
 		}
 		else
 		{
-			GetComponent<Button>().enabled = true;
+			button.enabled = true;
 			textNumberOfHops.text = $"{newNumber}";
 		}
 	}
