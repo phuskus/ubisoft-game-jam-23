@@ -9,9 +9,11 @@ public class PlayerShooting : MonoBehaviour
     public float ReloadTime = 0.25f;
 
     private float reloadTimer;
+    private Animator animator;
 
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         reloadTimer = ReloadTime;
     }
 
@@ -23,6 +25,7 @@ public class PlayerShooting : MonoBehaviour
 
         if(Input.GetMouseButton(0))
         {
+            animator.Play("Player Shoot", 0, 0);
             Instantiate(ProjectilePrefab, Player.Gun.transform.position, transform.rotation);
             Player.Gun.Particles.Play();
             reloadTimer = ReloadTime;

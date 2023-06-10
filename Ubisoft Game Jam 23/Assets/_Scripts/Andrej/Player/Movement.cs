@@ -9,10 +9,17 @@ public class Movement : SingletonMono<Movement>
     private bool outOfStamina;
     public bool PlayerHit;
     private Vector3 targetVector;
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
 
     IEnumerator Start()
     {
         yield return new WaitUntil(() => Player.Settings);
+
         //Player.Settings.playerStamina = Player.Settings.playerMaxStamina;
     }
 
@@ -23,7 +30,9 @@ public class Movement : SingletonMono<Movement>
         if(targetVector != Vector3.zero && !PlayerHit)
         {
             MoveTowardsTarget(targetVector); //actually move the player
+            animator.SetInteger("Movement", 1);
         }
+        animator.SetInteger("Movement", 0);
 
         #region << Useless >>
         //if(Input.GetKey(KeyCode.LeftShift) && !outOfStamina) //while the player has sprint button pressed
@@ -54,7 +63,9 @@ public class Movement : SingletonMono<Movement>
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == Player.Settings.WallLayer)
+        if (other.gameObject.layer == Player.Settings.WallLayer
+            && !PlayerHit
+            )
         {
             Vector3 direction = transform.position - other.transform.position;
             StartCoroutine(KnockBack(direction.normalized));
