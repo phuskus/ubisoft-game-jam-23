@@ -1,19 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zmijoguz;
 
-public class GameData : MonoBehaviour
+public class GameData : SingletonMono<GameData>
 {
-    #region Singleton
-    public static GameData instance;
+    public static PlayerData PlayerData;
+    public static CombatData CombatData;
 
-    private void Awake()
+    private void Start()
     {
-        instance = this;
+        PlayerData = PlayerData.Instance;
+        CombatData = CombatData.Instance;
     }
-
-    #endregion
-
-    public PlayerData playerData;
-    public CombatData combatData;
 }

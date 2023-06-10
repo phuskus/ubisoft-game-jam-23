@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zmijoguz;
 
 [CreateAssetMenu(fileName = "NewPlayerData", menuName = "GameData/PlayerData", order = 51)]
-public class PlayerData : ScriptableObject
+public class PlayerData : SingletonSO<PlayerData>
 {
     [Space(10f), Header(">>> Player Stats")]
 

@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zmijoguz;
 
 [CreateAssetMenu(fileName = "New Combat Data", menuName = "GameData/CombatData")]
-public class CombatData : ScriptableObject
+public class CombatData : SingletonSO<CombatData>
 {
     [Space(15f), Header(">>> Monster Damage Resistance")]
 

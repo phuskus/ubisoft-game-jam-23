@@ -21,13 +21,13 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        moveSpeed = GameData.instance.playerData.playerWalkSpeed;
-        GameData.instance.playerData.playerStamina = GameData.instance.playerData.playerMaxStamina;
+        moveSpeed = GameData.PlayerData.playerWalkSpeed;
+        GameData.PlayerData.playerStamina = GameData.PlayerData.playerMaxStamina;
     }
 
     private void Update()
     {
-        Vector3 targetVector = new Vector3(playerInput.input.x, 0f, playerInput.input.z); //get the target to which player should move
+        Vector3 targetVector = new Vector3(playerInput.KeyboardInput.x, 0f, playerInput.KeyboardInput.z); //get the target to which player should move
 
         if(targetVector != Vector3.zero)
         {
@@ -44,15 +44,15 @@ public class Movement : MonoBehaviour
 
         if(Input.GetKey(KeyCode.LeftShift) && !outOfStamina) //while the player has sprint button pressed
         {
-            if (GameData.instance.playerData.playerStamina > 0f) //if the player is not exhausted
+            if (GameData.PlayerData.playerStamina > 0f) //if the player is not exhausted
             {
-                GameData.instance.playerData.playerStamina = Mathf.MoveTowards(GameData.instance.playerData.playerStamina, 0f, GameData.instance.playerData.staminaDepletionSpeed * Time.deltaTime); //gradually decrease player's stamina
-                moveSpeed = Mathf.MoveTowards(moveSpeed, GameData.instance.playerData.playerRunSpeed, 10f * weightChangeSpeed * Time.deltaTime); //set the player's movement speed to sprint speed value
+                GameData.PlayerData.playerStamina = Mathf.MoveTowards(GameData.PlayerData.playerStamina, 0f, GameData.PlayerData.staminaDepletionSpeed * Time.deltaTime); //gradually decrease player's stamina
+                moveSpeed = Mathf.MoveTowards(moveSpeed, GameData.PlayerData.playerRunSpeed, 10f * weightChangeSpeed * Time.deltaTime); //set the player's movement speed to sprint speed value
                 playerAnimator.SetLayerWeight(2, Mathf.Lerp(playerAnimator.GetLayerWeight(2), 1f, weightChangeSpeed * Time.deltaTime)); //smoothly transition the player into the running animations
             }
-            else if (GameData.instance.playerData.playerStamina <= 0f) //if player uses up all of his stamina
+            else if (GameData.PlayerData.playerStamina <= 0f) //if player uses up all of his stamina
             {
-                moveSpeed = GameData.instance.playerData.playerWalkSpeed; //reset his movement speed back to walk speed value
+                moveSpeed = GameData.PlayerData.playerWalkSpeed; //reset his movement speed back to walk speed value
                 playerAnimator.SetLayerWeight(2, Mathf.Lerp(playerAnimator.GetLayerWeight(2), 0f, weightChangeSpeed * Time.deltaTime)); //smootly transition the player back to walking animations
                 outOfStamina = true; //turn on the exhausted state
                 staminaBarAnimator.SetBool("PlayerExhausted", true);
@@ -60,12 +60,12 @@ public class Movement : MonoBehaviour
         }
         else //while the sprint button is released
         {
-            GameData.instance.playerData.playerStamina = Mathf.MoveTowards(GameData.instance.playerData.playerStamina, GameData.instance.playerData.playerMaxStamina, GameData.instance.playerData.staminaDepletionSpeed * Time.deltaTime); //gradually increase player's stamina
-            moveSpeed = GameData.instance.playerData.playerWalkSpeed; //set the player's movement speed to walk value
+            GameData.PlayerData.playerStamina = Mathf.MoveTowards(GameData.PlayerData.playerStamina, GameData.PlayerData.playerMaxStamina, GameData.PlayerData.staminaDepletionSpeed * Time.deltaTime); //gradually increase player's stamina
+            moveSpeed = GameData.PlayerData.playerWalkSpeed; //set the player's movement speed to walk value
 
             playerAnimator.SetLayerWeight(2, Mathf.Lerp(playerAnimator.GetLayerWeight(2), 0f, weightChangeSpeed * Time.deltaTime)); //smootly transition the player back to walking animations if needed
 
-            if (GameData.instance.playerData.playerStamina >= GameData.instance.playerData.playerMaxStamina)
+            if (GameData.PlayerData.playerStamina >= GameData.PlayerData.playerMaxStamina)
             {
                 staminaBarAnimator.SetBool("PlayerExhausted", false);
                 outOfStamina = false;
@@ -76,24 +76,9 @@ public class Movement : MonoBehaviour
     private void MoveTowardsTarget(Vector3 target)
     {
         float distanceToCursor = (cursorPosition.position - transform.position).magnitude;
-
         float speed = moveSpeed * Time.deltaTime; //calculate the move speed over time
-
         Vector3 targetPosition = transform.position + target * speed; //calculate the target where to move
-
-        //transform.position = targetPosition; //actually move the player
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed);
-
         float distanceToCursor2 = (cursorPosition.position - transform.position).magnitude;
-
-        #region idk
-        //transform.position = Vector3.MoveTowards(transform.position, targetPosition, GameData.instance.playerData.moveSmoothFactor * Time.deltaTime);
-
-        //Vector3 lookTarget = moveTarget.position - transform.position;
-        //lookTarget.y = 0;
-        //Quaternion lookRotation = Quaternion.LookRotation(lookTarget);
-
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, Time.deltaTime * moveSmoothFactor);
-        #endregion
     }
 }

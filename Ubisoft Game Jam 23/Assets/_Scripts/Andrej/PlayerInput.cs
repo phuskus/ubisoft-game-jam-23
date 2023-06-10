@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zmijoguz;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : SingletonMono<PlayerInput>
 {
-    public Vector3 input;
-    public Vector3 mousePosition;
-
-    [SerializeField] private Animator playerAnimator;
-    [SerializeField] private float blendSpeed = 0.5f;
+    public Vector3 KeyboardInput;
+    public Vector3 MousePosition;
 
     private void Update()
     {
@@ -16,15 +14,12 @@ public class PlayerInput : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        mousePosition = Input.mousePosition.normalized; //store the mouse pointer position
+        MousePosition = Input.mousePosition.normalized; //store the mouse pointer position
 
         //calculate the input vector
-        input = (Vector3.forward * verticalInput) + (Vector3.right * horizontalInput);
+        KeyboardInput = (Vector3.forward * verticalInput) + (Vector3.right * horizontalInput);
 
-        Vector3 animationVector = transform.InverseTransformDirection(input);
-
-        playerAnimator.SetFloat("MoveX", Mathf.Lerp(playerAnimator.GetFloat("MoveX"), animationVector.x, blendSpeed * Time.deltaTime));
-        playerAnimator.SetFloat("MoveZ", Mathf.Lerp(playerAnimator.GetFloat("MoveZ"), animationVector.z, blendSpeed * Time.deltaTime));
+        Debug.Log(MousePosition);
     }
 }
 
