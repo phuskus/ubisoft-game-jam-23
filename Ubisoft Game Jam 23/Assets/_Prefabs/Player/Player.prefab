@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 3923995929299655631}
   - component: {fileID: 8591491763260410576}
   - component: {fileID: 5253176774355384283}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ Transform:
   - {fileID: 4558693754927692056}
   - {fileID: 2468115487045498794}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3120933748362217490
 MeshFilter:
@@ -436,6 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 349745a55aa6a9141bd04653119b7cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerHit: 0
 --- !u!114 &8591491763260410576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,8 +895,20 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 19839210, guid: e7c3a9353c0302b4cb1fab702e1db14f, type: 3}
+      propertyPath: ForceModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19839210, guid: e7c3a9353c0302b4cb1fab702e1db14f, type: 3}
+      propertyPath: ForceModule.inWorldSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19839210, guid: e7c3a9353c0302b4cb1fab702e1db14f, type: 3}
       propertyPath: ShapeModule.radius.value
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 19839210, guid: e7c3a9353c0302b4cb1fab702e1db14f, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

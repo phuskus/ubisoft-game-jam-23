@@ -30,4 +30,9 @@ public class BlockPassage : MonoBehaviour
     {
         transform.DOMoveY(transform.position.y - 1.01f, 0.5f);
     }
+
+    public void ClosePassage()
+    {
+        transform.DOMoveY(transform.position.y + 1.01f, 0.5f);
+    }
 }
