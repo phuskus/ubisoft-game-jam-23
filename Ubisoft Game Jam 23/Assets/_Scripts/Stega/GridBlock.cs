@@ -130,4 +130,13 @@ public class GridBlock : MonoBehaviour
             }
         }
     }
+
+    //private void OnDisable()
+    //{
+    //    for (int i = 0; i < enemies.Count; i++)
+    //    {
+    //        // listen to the enemy's death event
+    //        enemies[i].GetComponent<EnemyHealth>().DeathEvent -= CountEnemyDeaths;
+    //    }
+    //}
 }

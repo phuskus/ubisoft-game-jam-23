@@ -28,6 +28,6 @@ public class BlockPassage : MonoBehaviour
 
     public void OpenPassage()
     {
-        transform.DOMoveY(-1, 0.5f);
+        transform.DOMoveY(transform.position.y - 1.01f, 0.5f);
     }
 }
