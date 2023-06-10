@@ -57,7 +57,6 @@ public class Movement : SingletonMono<Movement>
         if (other.gameObject.layer == Player.Settings.WallLayer)
         {
             Vector3 direction = transform.position - other.transform.position;
-            direction.y = transform.position.y;
             StartCoroutine(KnockBack(direction.normalized));
         }
     }
@@ -78,6 +77,7 @@ public class Movement : SingletonMono<Movement>
         while(currentSpeed > 0f)
         {
             Vector3 targetPosition = transform.position + direction * currentSpeed; //calculate the target where to move
+            targetPosition.y = transform.position.y;
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, currentSpeed * Time.deltaTime);
             currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, Player.Settings.KnockBackFade * Time.deltaTime);
             yield return null;

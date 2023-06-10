@@ -19,6 +19,8 @@ MonoBehaviour:
   playerRunSpeed: 30
   TurnRate: 20
   Acceleration: 10
+  KnockBackPower: 20
+  KnockBackFade: 70
   ReloadTime: 0.25
   ProjectileSpeedStart: 18
   ProjectileSpeedEnd: 6
