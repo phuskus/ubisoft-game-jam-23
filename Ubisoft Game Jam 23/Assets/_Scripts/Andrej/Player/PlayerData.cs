@@ -23,4 +23,5 @@ public class PlayerData : SingletonSO<PlayerData>
     public float cameraExtendRadius = 10f;
     public float CameraHeadDistance = 10f;
     public float CameraFollowSpeed = 15f;
+    public LayerMask GroundLayer;
 }

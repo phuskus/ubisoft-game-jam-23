@@ -16,7 +16,7 @@ public class Movement : SingletonMono<Movement>
 
     private void Update()
     {
-        Vector3 targetVector = new Vector3(Player.Input.KeyboardInput.x, 0f, Player.Input.KeyboardInput.z); //get the target to which player should move
+        Vector3 targetVector = new Vector3(Player.Input.KeyboardInput.x, 0f, Player.Input.KeyboardInput.z).normalized; //get the target to which player should move
 
         if(targetVector != Vector3.zero)
         {
@@ -50,10 +50,8 @@ public class Movement : SingletonMono<Movement>
 
     private void MoveTowardsTarget(Vector3 target)
     {
-        //float distanceToCursor = (Player.CursorObject.transform.position - transform.position).magnitude;
         float speed = moveSpeed * Time.deltaTime; //calculate the move speed over time
         Vector3 targetPosition = transform.position + target * speed; //calculate the target where to move
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed);
-        //float distanceToCursor2 = (Player.CursorObject.transform.position - transform.position).magnitude;
     }
 }

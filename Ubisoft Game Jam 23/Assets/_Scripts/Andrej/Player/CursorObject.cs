@@ -5,5 +5,8 @@ using Zmijoguz;
 
 public class CursorObject : SingletonMono<CursorObject>
 {
-    
+    private void Start()
+    {
+        transform.SetParent(null);
+    }
 }

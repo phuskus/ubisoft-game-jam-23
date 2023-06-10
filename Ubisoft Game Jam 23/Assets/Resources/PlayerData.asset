@@ -16,9 +16,12 @@ MonoBehaviour:
   playerMaxStamina: 2
   staminaDepletionSpeed: 1
   playerWalkSpeed: 10
-  playerRunSpeed: 15
+  playerRunSpeed: 30
   TurnRate: 20
   Acceleration: 10
   cameraExtendRadius: 5
   CameraHeadDistance: 10
   CameraFollowSpeed: 15
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 128
