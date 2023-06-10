@@ -18,8 +18,6 @@ public class PlayerInput : SingletonMono<PlayerInput>
 
         //calculate the input vector
         KeyboardInput = (Vector3.forward * verticalInput) + (Vector3.right * horizontalInput);
-
-        Debug.Log(MousePosition);
     }
 }
 

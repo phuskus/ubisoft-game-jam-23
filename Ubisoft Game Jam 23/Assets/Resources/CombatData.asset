@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1fc41aa8056724d87d8ee47551fcbf, type: 3}
+  m_Name: CombatData
+  m_EditorClassIdentifier: 
+  mickoDamageSpeed: 0.4
+  wendigoDamageSpeed: 0.6
+  bobDamageSpeed: 0.8
+  mileDamageSpeed: 0.8
+  killThreshold: 0.75
+  mickoSpeed: 5
+  wendigoSpeed: 7.5
+  bobSpeed: 10
+  mileSpeed: 10
+  mickoSlowSpeed: 2.5
+  wendigoSlowSpeed: 3.75
+  bobSlowSpeed: 5
+  mileSlowSpeed: 5
+  mickoAttack: 1
+  wendigoAttack: 2
+  bobAttack: 4
+  mileAttack: 4
+  mickoStartRange: 5
+  wendigoStartRange: 5
+  bobStartRange: 5
+  mileStartRange: 5
+  mickoCatchRange: 10
+  wendigoCatchRange: 10
+  wendigoBombDelay: 2
+  bobCatchRange: 10
+  mileCatchRange: 10
+  agroRange: 10
