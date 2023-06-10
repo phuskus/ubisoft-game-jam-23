@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     public EnemyHealth Health;
     public EnemyMovement Movement;
 
+    public bool IsAlive { get; set; } = true;
+
     [SerializeField] private Animator animator;
     public Animator Animator { get => animator; set => animator = value; }
 

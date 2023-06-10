@@ -43,6 +43,8 @@ public class EnemyHealth : Damageable
 
     public override void HandleDeath()
     {
+        enemy.IsAlive = false;
+
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
         ParticleManager.Instance.SpawnEnemyDeathParticle(transform);
 
