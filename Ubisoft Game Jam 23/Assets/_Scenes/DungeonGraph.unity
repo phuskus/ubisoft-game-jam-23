@@ -152,6 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa40c8f7d17506549a46790e2594b918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnVictory:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDefeat:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &345834024
 Transform:
   m_ObjectHideFlags: 0
