@@ -88,8 +88,6 @@ public class EnemyMovement : MonoBehaviour
                     Random.value
                 ));
 
-            print(Agent.remainingDistance);
-
             if (Agent.remainingDistance <= Agent.stoppingDistance)
             {
                 Agent.speed = 0;

@@ -3,39 +3,64 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameFlowManager : MonoBehaviour
 {
-	[SerializeField] private int gameDurationSeconds = 5;
+	public static GameFlowManager I { get; private set; }
+	
+	[SerializeField] private float gameDurationSeconds = 75;
 	[SerializeField] private TextMeshProUGUI textTimer;
 
-	private float startTime;
-	private int lastSecondsElapsed;
-	
+	private float secondsLeft;
+	private bool timerEnabled;
+
+	private void Awake()
+	{
+		if (I != null)
+		{
+			Destroy(gameObject);
+			return;
+		}
+
+		I = this;
+		DontDestroyOnLoad(gameObject);
+	}
+
 	private void Start()
 	{
 		ResetGame();
 	}
 
-	public void ResetGame()
+	public static void ResetGame()
 	{
-		startTime = Time.time;
-		lastSecondsElapsed = -1;
+		I.secondsLeft = I.gameDurationSeconds;
+		I.timerEnabled = true;
+		DungeonGraphManager.Reset();
+		SceneManager.LoadScene("DungeonGraph");
 	}
 
 	private void Update()
 	{
-		int secondsElapsed = Mathf.CeilToInt(Time.time - startTime);
-		if (secondsElapsed != lastSecondsElapsed)
+		if (!timerEnabled)
+			return;
+		
+		secondsLeft -= Time.deltaTime;
+		if (secondsLeft <= 0)
 		{
-			Debug.Log("Update");
-			lastSecondsElapsed = secondsElapsed;
-			
-			int secondsLeft = gameDurationSeconds - Mathf.CeilToInt(Time.time - startTime);
-			int minutesLeft = secondsLeft / 60;
-			secondsLeft %= 60;
-
-			textTimer.text = $"{minutesLeft:D2}:{secondsLeft:D2}";
+			ResetGame();
+			return;
 		}
+		
+		int secondsLeftAsInt = Mathf.CeilToInt(secondsLeft);
+		int minutesLeft = secondsLeftAsInt / 60;
+		secondsLeftAsInt %= 60;
+
+		textTimer.text = $"{minutesLeft:D2}:{secondsLeftAsInt:D2}";
+	}
+
+	public static void OnVictory()
+	{
+		ResetGame();
 	}
 }
