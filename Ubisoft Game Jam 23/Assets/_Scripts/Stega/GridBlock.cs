@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class GridBlock : MonoBehaviour
 {
+    private int _playerLayer;
+    public bool Triggered { get; set; }
+
     [SerializeField] private List<Transform> obstaclePostions = new();
     [Space(10)]
     [SerializeField] private List<GameObject> obstaclePrefabs;
@@ -10,15 +13,17 @@ public class GridBlock : MonoBehaviour
     [Space(10)]
     [Header("Enemy Settings")]
     [SerializeField] private List<Transform> enemySpawnPositions = new();
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private Enemy enemyPrefab;
 
     [Space(10)]
-    [SerializeField] private List<GameObject> enemies = new();
+    [SerializeField] private List<Enemy> enemies = new();
     private int enemyDeathCounter;
+
+    public bool BlockCleared { get; private set; }
 
     [Space(10)]
     [Header("Passage Blockers")]
-    [SerializeField] private List<GameObject> passageBlockers;
+    [SerializeField] private List<BlockPassage> passageBlockers;
 
     // Call for enabling of this script before the player enters the segment
     private void Start()
@@ -30,7 +35,10 @@ public class GridBlock : MonoBehaviour
 
         SpawnEnemies();
 
-        //if (ramp == null) ramp = GetComponentInChildren<Ramp>();
+        _playerLayer = LayerMask.NameToLayer("Player");
+
+        // Disable all the enemies and wait for player to enter the room
+        ChangeEnemyActiveStateTo(false);
     }
 
     private void SpawnObstacles()
@@ -54,7 +62,7 @@ public class GridBlock : MonoBehaviour
         {
             int randomPosition = Random.Range(0, enemySpawnPositions.Count);
 
-            GameObject enemy = Instantiate(enemyPrefab, enemySpawnPositions[randomPosition]);
+            Enemy enemy = Instantiate(enemyPrefab, enemySpawnPositions[randomPosition]);
 
             // add enemy to list
             enemies.Add(enemy);
@@ -70,12 +78,55 @@ public class GridBlock : MonoBehaviour
 
         if (enemyDeathCounter == enemies.Count)
         {
-            // When all enemies are cleared -> activate ramp
-            //StartCoroutine(ramp.ActivateRamp());
+            BlockCleared = true;
 
-            foreach(GameObject passage in passageBlockers)
+            // When all enemies are cleared -> activate ramp
+            foreach (BlockPassage passage in passageBlockers)
             {
-                passage.SetActive(false);
+                // Open -> Move animation
+                passage.OpenPassage();
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == _playerLayer
+            )
+        {
+            print("da");
+            // Activate all the remaining enemies
+            foreach (Enemy enemy in enemies)
+            {
+                if (enemy.IsAlive)
+                {
+                    enemy.gameObject.SetActive(true);
+                }
+            }
+
+            Triggered = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == _playerLayer
+            && Triggered
+                )
+        {
+            // When leaving the room, check if there are any enemies alive
+            // and disable them
+            ChangeEnemyActiveStateTo(false);
+        }
+    }
+
+    private void ChangeEnemyActiveStateTo(bool isActive)
+    {
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy.IsAlive != isActive)
+            {
+                enemy.gameObject.SetActive(isActive);
             }
         }
     }
