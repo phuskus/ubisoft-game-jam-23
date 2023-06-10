@@ -12,12 +12,11 @@ public class GridBlock : MonoBehaviour
 
     [Space(10)]
     [Header("Enemy Settings")]
-    [SerializeField] private List<Transform> enemySpawnPositions = new();
     [SerializeField] private Enemy enemyPrefab;
 
     [Space(10)]
     [SerializeField] private List<Enemy> enemies = new();
-    private int enemyDeathCounter;
+    //private int enemyDeathCounter;
 
     public bool BlockCleared { get; private set; }
 
@@ -56,13 +55,13 @@ public class GridBlock : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        int enemiesNumber = Random.Range(2, 3 + DungeonGraphManager.CurrentDungeonDifficulty * 2);
+        int enemiesNumber = Random.Range(3, 3 + DungeonGraphManager.CurrentDungeonDifficulty * 3);
 
         for (int i = 0; i < enemiesNumber; i++)
         {
-            int randomPosition = Random.Range(0, enemySpawnPositions.Count);
+            Vector3 randomPosition = new Vector3( Random.Range(-8, 9), 0, Random.Range(-8, 9));
 
-            Enemy enemy = Instantiate(enemyPrefab, enemySpawnPositions[randomPosition]);
+            Enemy enemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
 
             // add enemy to list
             enemies.Add(enemy);
@@ -71,11 +70,15 @@ public class GridBlock : MonoBehaviour
 
     private void CheckEnemyDeaths()
     {
+        bool haveAliveEnemies = false; 
+
         for (int i = 0; i < enemies.Count; i++)
         {
-            if (enemies[i].IsAlive) return;
+            if (enemies[i].IsAlive) haveAliveEnemies = true;
+        }
 
-            // else
+        if(!haveAliveEnemies)
+        {
             BlockCleared = true;
 
             // When all enemies are cleared -> activate ramp
