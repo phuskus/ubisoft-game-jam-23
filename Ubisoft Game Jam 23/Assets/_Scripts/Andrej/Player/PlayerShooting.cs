@@ -24,6 +24,7 @@ public class PlayerShooting : MonoBehaviour
         if(Input.GetMouseButton(0))
         {
             Instantiate(ProjectilePrefab, Player.Gun.transform.position, transform.rotation);
+            Player.Gun.Particles.Play();
             reloadTimer = ReloadTime;
         }
     }
