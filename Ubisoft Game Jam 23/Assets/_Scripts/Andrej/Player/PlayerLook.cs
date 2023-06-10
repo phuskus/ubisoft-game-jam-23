@@ -18,7 +18,8 @@ public class PlayerLook : MonoBehaviour
         
         if(groundPlane.Raycast(ray, out float hitDistance))
         {
-            Vector3 hit = ray.direction * hitDistance;
+            Vector3 hit = ray.origin + ray.direction * hitDistance;
+            
             transform.LookAt(Player.CursorObject.transform.position, Vector3.up);
             mousePosition = new Vector3(hit.x, transform.position.y, hit.z);
 
