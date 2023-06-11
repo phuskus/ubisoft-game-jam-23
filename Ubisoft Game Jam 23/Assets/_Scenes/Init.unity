@@ -271,6 +271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9174436827684721252, guid: 40dea2e72f5f6ff42ac7c4c2752dd5cc,
         type: 3}
+      propertyPath: GameWin.Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: bcc17f816a27d4248a248cc41e81ecf2, type: 3}
+    - target: {fileID: 9174436827684721252, guid: 40dea2e72f5f6ff42ac7c4c2752dd5cc,
+        type: 3}
       propertyPath: DoorOpen.Clip
       value: 
       objectReference: {fileID: 8300000, guid: dfd71fe68231488448113e75e75d50d4, type: 3}
@@ -279,6 +284,11 @@ PrefabInstance:
       propertyPath: DoorClose.Clip
       value: 
       objectReference: {fileID: 8300000, guid: f0e59c42d4ceafe4abfcf65a85e47b06, type: 3}
+    - target: {fileID: 9174436827684721252, guid: 40dea2e72f5f6ff42ac7c4c2752dd5cc,
+        type: 3}
+      propertyPath: GameWin.Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9174436827684721252, guid: 40dea2e72f5f6ff42ac7c4c2752dd5cc,
         type: 3}
       propertyPath: DoorClose.Volume
