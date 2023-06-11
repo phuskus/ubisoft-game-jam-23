@@ -18,8 +18,7 @@ public class DungeonLevelManager : MonoBehaviour
     [SerializeField] private GridBlock gridBlockEndPrefab;
     [SerializeField] private GridBlock gridBlockStartPrefab;
     [SerializeField] private TextMeshProUGUI textRoomsCleared;
-    
-    
+
     private void Awake()
     {
         if (I != null)
