@@ -64,4 +64,16 @@ public class SoundManager : SingletonMono<SoundManager>
         int randomIndex = Random.Range(0, EnemyAttacks.Count);
         PlaySound(EnemyAttacks[randomIndex]);
     }
+
+    public void StopAllSounds()
+    {
+        gameAudio.Stop();
+        StopAllCoroutines();
+    }
+
+    public void PlayMainMusic()
+    {
+        gameAudio.volume = 1;
+        gameAudio.Play();
+    }
 }

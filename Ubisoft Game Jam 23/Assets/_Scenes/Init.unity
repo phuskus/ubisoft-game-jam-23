@@ -183,13 +183,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27775171}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 979859713}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &200805027
 PrefabInstance:
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877551de489bd4c43bdb668516cd2cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDurationSeconds: 180
+  gameDurationSeconds: 300
   textTimer: {fileID: 1916763851}
 --- !u!4 &979859713
 Transform:
@@ -457,11 +457,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 970534811}
-  - {fileID: 1174631875}
   - {fileID: 200805028}
+  - {fileID: 1174631875}
   - {fileID: 1947083912}
+  - {fileID: 27775174}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1174631874
 PrefabInstance:
@@ -475,6 +476,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Activate Windows Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909265172107490069, guid: 602c46c53965942418b42f3ace3c2e66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2756355703686942038, guid: 602c46c53965942418b42f3ace3c2e66,
         type: 3}
@@ -711,7 +717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -60, y: -60}
+  m_AnchoredPosition: {x: -30, y: -30}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1916763851
@@ -761,8 +767,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -819,6 +825,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 979859713}
     m_Modifications:
+    - target: {fileID: 390648665771939885, guid: b0fa280089350e7499ac29b723dd9112,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 390648665771939885, guid: b0fa280089350e7499ac29b723dd9112,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 390648665771939885, guid: b0fa280089350e7499ac29b723dd9112,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 390648665771939885, guid: b0fa280089350e7499ac29b723dd9112,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2512386407175886974, guid: b0fa280089350e7499ac29b723dd9112,
         type: 3}
       propertyPath: m_IsActive
@@ -883,6 +909,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ending Sequence
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382936117952664237, guid: b0fa280089350e7499ac29b723dd9112,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1030,5 +1061,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
