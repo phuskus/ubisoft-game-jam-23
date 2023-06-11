@@ -37,10 +37,10 @@ public class DungeonLevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GenerateDungeon();
-        }
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     GenerateDungeon();
+        // }
 
         textRoomsCleared.text = $"Rooms left: {RoomsLeftToClear}";
     }

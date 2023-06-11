@@ -74,6 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   Movement: {fileID: 0}
+  DeathParticles: {fileID: 160382, guid: b4c6e36503ea28e40b299f5d88269621, type: 3}
 --- !u!114 &1957676215963656735
 MonoBehaviour:
   m_ObjectHideFlags: 0

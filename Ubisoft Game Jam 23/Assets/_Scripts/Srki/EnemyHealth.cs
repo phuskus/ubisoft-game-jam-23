@@ -15,6 +15,8 @@ public class EnemyHealth : Damageable
 
     private Enemy enemy;
 
+    public GameObject DeathParticles;
+
     private void Start()
     {
         Movement = GetComponent<EnemyMovement>();
@@ -56,7 +58,7 @@ public class EnemyHealth : Damageable
 
         // event comes from inherited class
         EventManager.EnemyDeathEvent?.Invoke();
-
+        Instantiate(DeathParticles, transform.position, Quaternion.identity * Quaternion.Euler(Vector3.right * 90f));
         gameObject.SetActive(false);
     }
 

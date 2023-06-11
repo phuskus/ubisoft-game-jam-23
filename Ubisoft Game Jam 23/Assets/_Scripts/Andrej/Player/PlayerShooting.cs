@@ -30,6 +30,7 @@ public class PlayerShooting : MonoBehaviour
         {
             animator.Play("Player Shoot", 0, 0);
             Instantiate(ProjectilePrefab, Player.Gun.transform.position, transform.rotation);
+            Player.Sound.PlayPlayerFire();
             Player.Gun.Particles.Play();
             reloadTimer = ReloadTime;
 
