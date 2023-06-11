@@ -10,11 +10,14 @@ public class PlayerShooting : MonoBehaviour
 
     private float reloadTimer;
     private Animator animator;
+    private Movement movement;
+    [SerializeField] private float cantSprintTime = 1f;
 
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
         reloadTimer = ReloadTime;
+        movement = GetComponent<Movement>();
     }
 
     private void Update()
@@ -29,6 +32,8 @@ public class PlayerShooting : MonoBehaviour
             Instantiate(ProjectilePrefab, Player.Gun.transform.position, transform.rotation);
             Player.Gun.Particles.Play();
             reloadTimer = ReloadTime;
+
+            movement.CantSprintTime = cantSprintTime;
         }
     }
 }

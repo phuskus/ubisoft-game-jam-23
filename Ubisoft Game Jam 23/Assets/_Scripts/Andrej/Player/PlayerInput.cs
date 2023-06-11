@@ -7,12 +7,6 @@ public class PlayerInput : SingletonMono<PlayerInput>
 {
     public Vector3 KeyboardInput;
     public Vector3 MousePosition;
-    private Player player;
-
-    private void Start()
-    {
-        player = GetComponent<Player>();
-    }
 
     private void Update()
     {
@@ -24,15 +18,6 @@ public class PlayerInput : SingletonMono<PlayerInput>
 
         //calculate the input vector
         KeyboardInput = (Vector3.forward * verticalInput) + (Vector3.right * horizontalInput);
-
-        if(KeyboardInput != Vector3.zero)
-        {
-            player.Animator.SetInteger("Movement", 1);
-        }
-        else
-        {
-            player.Animator.SetInteger("Movement", 0);
-        }
     }
 }
 

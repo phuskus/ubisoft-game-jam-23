@@ -5,20 +5,21 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     private Vector3 mousePosition;
-    [SerializeField] private LayerMask layer;
-
     private Vector3 targetMousePosition;
 
     Ray ray;
+    private Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
 
     void Update()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-        if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, Player.Settings.GroundLayer))
+
+        if (groundPlane.Raycast(ray, out float hitDistance))
         {
+            Vector3 hit = ray.origin + ray.direction * hitDistance;
+            
             transform.LookAt(Player.CursorObject.transform.position, Vector3.up);
-            mousePosition = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            mousePosition = new Vector3(hit.x, transform.position.y, hit.z);
 
             float mouseDistance = Vector3.Distance(transform.position, mousePosition);
 

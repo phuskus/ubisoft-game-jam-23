@@ -17,7 +17,7 @@ MonoBehaviour:
   staminaDepletionSpeed: 1
   playerWalkSpeed: 5
   playerRunSpeed: 30
-  TurnRate: 20
+  TurnRate: 60
   Acceleration: 10
   KnockBackPower: 20
   KnockBackFade: 70

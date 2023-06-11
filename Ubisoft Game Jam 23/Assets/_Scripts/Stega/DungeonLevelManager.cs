@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -10,10 +11,13 @@ public class DungeonLevelManager : MonoBehaviour
 {
     public static DungeonLevelManager I { get; private set; }
     public static int RoomCount = 5;
+    public static int RoomsLeftToClear;
     public static List<int2> BlockCoords;
     
     [SerializeField] private GridBlock gridBlockPrefab;
     [SerializeField] private GridBlock gridBlockEndPrefab;
+    [SerializeField] private TextMeshProUGUI textRoomsCleared;
+    
     
     private void Awake()
     {
@@ -37,6 +41,8 @@ public class DungeonLevelManager : MonoBehaviour
         {
             GenerateDungeon();
         }
+
+        textRoomsCleared.text = $"Rooms left: {RoomsLeftToClear}";
     }
 
     private void GenerateDungeon()
@@ -46,6 +52,7 @@ public class DungeonLevelManager : MonoBehaviour
             Destroy(o.gameObject);
         }
 
+        RoomsLeftToClear = RoomCount - 1;
         BlockCoords = new List<int2>();
 
         List<GridBlock> blocks = new List<GridBlock>();
