@@ -1196,6 +1196,8 @@ MonoBehaviour:
   obstaclePrefabs: []
   enemyPrefab: {fileID: 7475908224119191665, guid: 543c612c87e8b484ba1dd09b014fe666,
     type: 3}
+  bossPrefab: {fileID: 1460993987467036552, guid: 0dc89530a885512448352c071dacca02,
+    type: 3}
   enemies: []
   BlockCleared: 0
   passageBlockers:

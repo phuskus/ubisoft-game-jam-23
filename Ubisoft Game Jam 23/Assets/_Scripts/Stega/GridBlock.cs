@@ -24,6 +24,7 @@ public class GridBlock : MonoBehaviour
     [Space(10)]
     [Header("Enemy Settings")]
     [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private Enemy bossPrefab;
 
     [Space(10)]
     [SerializeField] private List<Enemy> enemies = new();
@@ -74,6 +75,14 @@ public class GridBlock : MonoBehaviour
             Vector3 randomPosition = transform.position + new Vector3(Random.Range(-8, 9), 0, Random.Range(-8, 9));
 
             Enemy enemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity, transform);
+
+            // add enemy to list
+            enemies.Add(enemy);
+        }
+
+        if (bossPrefab != null && DungeonGraphManager.CurrentDungeonDifficulty == 0)
+        {
+            Enemy enemy = Instantiate(bossPrefab, transform.position, Quaternion.identity, transform);
 
             // add enemy to list
             enemies.Add(enemy);
