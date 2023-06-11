@@ -185,9 +185,6 @@ public class DungeonGraphManager : MonoBehaviour
             DungeonLevelManager.RoomCount = 5 + CurrentDungeonDifficulty;
         }
 
-        DungeonLevelManager.RoomCount = 3;
-        
-        
         if (node != endNode)
         {
             (lastCompletedNodeRow, lastCompletedNodeCol) = (node.Row, node.Col);
