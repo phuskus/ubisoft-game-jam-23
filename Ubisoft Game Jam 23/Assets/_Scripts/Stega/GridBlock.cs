@@ -171,6 +171,7 @@ public class GridBlock : MonoBehaviour
 
     public void CloseAllDoors()
     {
+        SoundManager.Instance.PlayDoorClose();
         foreach (BlockPassage p in passageBlockers)
         {
             p.SetOpenState(false);
@@ -179,6 +180,7 @@ public class GridBlock : MonoBehaviour
 
     public void OpenAllValidDoors()
     {
+        SoundManager.Instance.PlayDoorOpen();
         foreach (int2 dir in DIRECTIONS)
         {
             int2 pos = Coords + dir;

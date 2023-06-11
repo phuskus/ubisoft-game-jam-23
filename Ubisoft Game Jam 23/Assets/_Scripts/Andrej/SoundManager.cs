@@ -19,7 +19,7 @@ public class SoundManager : SingletonMono<SoundManager>
 
     private void Start()
     {
-        gameAudio = Camera.main.GetComponent<AudioSource>();
+        gameAudio = GetComponent<AudioSource>();
     }
 
     private void Update()
