@@ -7,17 +7,28 @@ using Zmijoguz;
 public class Movement : SingletonMono<Movement>
 {
     [SerializeField] private float moveSpeed = 5;
+    [SerializeField] private float sprintSpeed = 7;
+
+    private float initialSpeed;
     private bool outOfStamina;
     public bool PlayerHit;
     private Vector3 targetVector;
 
+    [SerializeField] private Animator animator;
     [SerializeField] private CharacterController characterController;
+
+    public float CantSprintTime { get; set; }
 
     IEnumerator Start()
     {
         yield return new WaitUntil(() => Player.Settings);
 
         //Player.Settings.playerStamina = Player.Settings.playerMaxStamina;
+    }
+
+    private void OnEnable()
+    {
+        initialSpeed = moveSpeed;
     }
 
     private void Update()
@@ -28,8 +39,27 @@ public class Movement : SingletonMono<Movement>
         //{
         //    MoveTowardsTarget(targetVector); //actually move the player
         //}
+        CantSprintTime -= Time.deltaTime;
 
         characterController.Move(Player.Input.KeyboardInput * moveSpeed * Time.deltaTime);
+
+        if (Player.Input.KeyboardInput != Vector3.zero)
+        {
+            if (Input.GetKey(KeyCode.LeftShift)
+                && CantSprintTime < 0
+                )
+            {
+                moveSpeed = sprintSpeed;
+                animator.SetInteger("Movement", 2);
+                return;
+            }
+            moveSpeed = initialSpeed;
+            animator.SetInteger("Movement", 1);
+        }
+        else
+        {
+            animator.SetInteger("Movement", 0);
+        }
 
         #region << Useless >>
         //if(Input.GetKey(KeyCode.LeftShift) && !outOfStamina) //while the player has sprint button pressed

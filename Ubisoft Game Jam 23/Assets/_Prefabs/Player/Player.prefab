@@ -337,7 +337,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  sprintSpeed: 8
   PlayerHit: 0
+  animator: {fileID: 5948711574078460639}
   characterController: {fileID: 5245330073784974821}
 --- !u!114 &8591491763260410576
 MonoBehaviour:
@@ -369,6 +371,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 6884551093739505835, guid: e350e88cc242e6743b719a18ea59c1cf,
     type: 3}
   ReloadTime: 0.25
+  cantSprintTime: 1
 --- !u!143 &5245330073784974821
 CharacterController:
   m_ObjectHideFlags: 0

@@ -241,6 +241,12 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!95 &385459652 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5948711574078460639, guid: 9483a2e15d4f66d479682f0d141693c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1460917093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &663078175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376,6 +382,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3923995929299655631, guid: 9483a2e15d4f66d479682f0d141693c1,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 385459652}
+    - target: {fileID: 3923995929299655631, guid: 9483a2e15d4f66d479682f0d141693c1,
+        type: 3}
+      propertyPath: sprintSpeed
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4890012244565844194, guid: 9483a2e15d4f66d479682f0d141693c1,
         type: 3}
