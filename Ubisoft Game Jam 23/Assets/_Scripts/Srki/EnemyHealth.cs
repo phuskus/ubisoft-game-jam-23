@@ -19,6 +19,7 @@ public class EnemyHealth : Damageable
     {
         Movement = GetComponent<EnemyMovement>();
         enemy = GetComponent<Enemy>();
+        Health = maxHealth;
 
         //if (healthBar == null) healthBar = GetComponentInChildren<Slider>();
         //healthBar.maxValue = healthData.MaxHealth;

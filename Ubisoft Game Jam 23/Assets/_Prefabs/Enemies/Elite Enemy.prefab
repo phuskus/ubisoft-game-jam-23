@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fae22ccedc9f21f4194bde03f5e27552, type: 2}
+  - {fileID: 2100000, guid: bb3b13f76ec29bf4687b7a35e54b27b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fae22ccedc9f21f4194bde03f5e27552, type: 2}
+  - {fileID: 2100000, guid: bb3b13f76ec29bf4687b7a35e54b27b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -272,7 +272,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fae22ccedc9f21f4194bde03f5e27552, type: 2}
+  - {fileID: 2100000, guid: bb3b13f76ec29bf4687b7a35e54b27b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -377,7 +377,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fae22ccedc9f21f4194bde03f5e27552, type: 2}
+  - {fileID: 2100000, guid: bb3b13f76ec29bf4687b7a35e54b27b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -436,6 +436,7 @@ GameObject:
   - component: {fileID: -4697910575072500644}
   - component: {fileID: -3498344310301943664}
   - component: {fileID: -7858634957492034185}
+  - component: {fileID: 5174199554738322458}
   m_Layer: 6
   m_Name: Elite Enemy
   m_TagString: Untagged
@@ -493,7 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9bd10328db0fd419f31acc29c77904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 5
   DeathParticles: {fileID: 160382, guid: b4c6e36503ea28e40b299f5d88269621, type: 3}
 --- !u!114 &1957676215963656735
 MonoBehaviour:
@@ -590,6 +591,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2.683761, z: 2.4167328}
   m_Center: {x: 0, y: 0.43375385, z: 1.6833081}
+--- !u!114 &5174199554738322458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8410259282578657014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1147235efbcbbe4688c4ad643f62923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cubes:
+  - {fileID: 2985096832010796820}
+  - {fileID: 6756301587878760475}
+  - {fileID: 6597757829348557943}
+  - {fileID: 3450181751023757451}
+  DamagedMaterial: {fileID: 2100000, guid: fae22ccedc9f21f4194bde03f5e27552, type: 2}
+  Index: 0
 --- !u!1 &8481101332095281024
 GameObject:
   m_ObjectHideFlags: 0

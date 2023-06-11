@@ -17,7 +17,8 @@ public abstract class Damageable : MonoBehaviour, IHandleDeath
     {
         // Damage taken should always be 1 when the Player is the one doing the damage
         health -= damage;
-
+        EliteHealthUpdate elite = GetComponent<EliteHealthUpdate>();
+        if (elite) elite.DamageNextCube();
         TakeDamageEvent?.Invoke(damage);
 
         // react to damage
