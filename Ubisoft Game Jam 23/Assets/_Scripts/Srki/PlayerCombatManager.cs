@@ -17,7 +17,7 @@ public class PlayerCombatManager : Damageable
 {
     private bool deathTriggered;
 
-    public GameObject DamageParticles;
+    
 
     private void Start()
     {
@@ -26,9 +26,7 @@ public class PlayerCombatManager : Damageable
 
     public override void HandlePain()
     {
-        Instantiate(DamageParticles, transform.position, Quaternion.identity);
-
-        Player.Sound.PlayEnemyAttack();
+        
 
         print("Put damage-player effects here!");
     }

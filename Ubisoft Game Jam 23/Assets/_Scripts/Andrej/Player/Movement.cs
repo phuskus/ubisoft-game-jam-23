@@ -41,7 +41,15 @@ public class Movement : SingletonMono<Movement>
         //}
         CantSprintTime -= Time.deltaTime;
 
-        characterController.Move(Player.Input.KeyboardInput * moveSpeed * Time.deltaTime);
+        if(characterController.isGrounded)
+        {
+            characterController.Move(Player.Input.KeyboardInput * moveSpeed * Time.deltaTime);
+        }
+        else if(!characterController.isGrounded)
+        {
+            characterController.Move(Vector3.down * moveSpeed * Time.deltaTime);
+        }
+        
 
         if (Player.Input.KeyboardInput != Vector3.zero)
         {

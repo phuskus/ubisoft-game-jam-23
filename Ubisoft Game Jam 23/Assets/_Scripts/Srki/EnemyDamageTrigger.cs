@@ -10,6 +10,7 @@ public class EnemyDamageTrigger : MonoBehaviour
     private float waitTime = 0.5f; // time until the trigger activates again
 
     [SerializeField] private Enemy enemy;
+    public GameObject DamageParticles;
 
     private void Start()
     {
@@ -29,6 +30,9 @@ public class EnemyDamageTrigger : MonoBehaviour
             if (other.TryGetComponent(out Damageable damageableHP))
             {
                 // deal damage to player from scriptable object from Enemy script
+
+                Instantiate(DamageParticles, transform.position, Quaternion.identity);
+                Player.Sound.PlayEnemyAttack();
                 damageableHP.TakeDamage(enemy.AttackDamage);
             }
             //other.GetComponent<Damageable>().TakeDamage(enemy.AttackSO.Damage);
