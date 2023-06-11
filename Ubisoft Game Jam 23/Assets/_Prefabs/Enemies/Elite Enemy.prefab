@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3056494463307881299}
   - component: {fileID: 3450181751023757451}
   - component: {fileID: 3212234176124355508}
-  - component: {fileID: 7498846820143494858}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: Untagged
@@ -106,27 +105,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &7498846820143494858
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 123683843592769}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a1d7ab6ef4483ba4188d21b5a819ef7a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3964333121055526669
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +117,6 @@ GameObject:
   - component: {fileID: 7108176323005515530}
   - component: {fileID: 6756301587878760475}
   - component: {fileID: 2594932938938310687}
-  - component: {fileID: 3261804048656705339}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
@@ -233,27 +210,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &3261804048656705339
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3964333121055526669}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a1d7ab6ef4483ba4188d21b5a819ef7a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4824557996484931814
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +222,6 @@ GameObject:
   - component: {fileID: 2012388328124986654}
   - component: {fileID: 6597757829348557943}
   - component: {fileID: 7225664007160454770}
-  - component: {fileID: 4123729055812827862}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: Untagged
@@ -360,27 +315,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &4123729055812827862
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4824557996484931814}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a1d7ab6ef4483ba4188d21b5a819ef7a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7932628993374711060
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +327,6 @@ GameObject:
   - component: {fileID: 3258744602465125005}
   - component: {fileID: 2985096832010796820}
   - component: {fileID: 2480766074336542451}
-  - component: {fileID: 1659777636777092637}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -487,27 +420,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &1659777636777092637
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7932628993374711060}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a1d7ab6ef4483ba4188d21b5a819ef7a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8410259282578657014
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +434,6 @@ GameObject:
   - component: {fileID: 1957676215963656735}
   - component: {fileID: 7475908224119191665}
   - component: {fileID: -4697910575072500644}
-  - component: {fileID: 6066916179629968134}
   - component: {fileID: -3498344310301943664}
   - component: {fileID: -7858634957492034185}
   m_Layer: 6
@@ -612,9 +523,9 @@ MonoBehaviour:
   Health: {fileID: 8218924837816700286}
   Movement: {fileID: 1957676215963656735}
   animator: {fileID: 0}
-  agroRange: 20
-  attackRange: 3
-  attackDamage: 1
+  agroRange: 15
+  attackRange: 2
+  attackDamage: 2
   walkSpeed: 2
   runSpeed: 5
 --- !u!54 &-4697910575072500644
@@ -644,27 +555,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!65 &6066916179629968134
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8410259282578657014}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!114 &-3498344310301943664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,8 +588,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.683761, z: 2.4167328}
+  m_Center: {x: 0, y: 0.43375385, z: 1.6833081}
 --- !u!1 &8481101332095281024
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,10 +696,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.6812842, z: 2.0841923}
+  m_Center: {x: 0, y: 0.43210566, z: -0.35354108}
 --- !u!95 &7383139233037851618
 Animator:
   serializedVersion: 5

@@ -49,7 +49,10 @@ public class DungeonLevelManager : MonoBehaviour
 
     public void DestroyLevel()
     {
-        Destroy(levelParent.gameObject);
+        if (levelParent != null)
+        {
+            Destroy(levelParent.gameObject);
+        }
     }
 
     private void GenerateDungeon()
