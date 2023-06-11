@@ -6,4 +6,6 @@ using UnityEngine;
 public static class EventManager
 {
     public static Action EnemyDeathEvent;
+
+    public static Action ActivateWindowsEvent;
 }
