@@ -13,6 +13,9 @@ public class PlayerCamera : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (player == null)
+            return;
+        
         Vector3 targetPosition = (player.position + Player.CursorObject.transform.position) / 2f;
 
         targetPosition.x = Mathf.Clamp(targetPosition.x, -Player.Settings.CameraHeadDistance + player.position.x, player.position.x + Player.Settings.CameraHeadDistance);

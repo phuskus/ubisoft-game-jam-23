@@ -67,13 +67,13 @@ public class GridBlock : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        int enemiesNumber = Random.Range(3, 3 + DungeonGraphManager.CurrentDungeonDifficulty * 3);
+        int enemiesNumber = Random.Range(3, 3 + DungeonGraphManager.CurrentDungeonDifficulty * 5);
 
         for (int i = 0; i < enemiesNumber; i++)
         {
             Vector3 randomPosition = transform.position + new Vector3(Random.Range(-8, 9), 0, Random.Range(-8, 9));
 
-            Enemy enemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
+            Enemy enemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity, transform);
 
             // add enemy to list
             enemies.Add(enemy);
