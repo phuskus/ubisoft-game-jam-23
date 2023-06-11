@@ -16,6 +16,7 @@ public class SoundManager : SingletonMono<SoundManager>
     public List<SoundEffect> PlayerAttacks;
     public SoundEffect LevelSelect;
     public SoundEffect LevelWin;
+    public SoundEffect GameWin;
 
     private void Start()
     {
@@ -56,6 +57,7 @@ public class SoundManager : SingletonMono<SoundManager>
     public void PlayDoorClose() => PlaySound(DoorClose);
     public void PlayLevelSelect() => PlaySound(LevelSelect);
     public void PlayLevelWin() => PlaySound(LevelWin);
+    public void PlayGameWin() => PlaySound(GameWin);
     public void PlayPlayerFire()
     {
         int randomIndex = Random.Range(0, PlayerAttacks.Count);
