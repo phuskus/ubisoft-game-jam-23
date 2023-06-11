@@ -58,7 +58,8 @@ public class EnemyHealth : Damageable
 
         // event comes from inherited class
         EventManager.EnemyDeathEvent?.Invoke();
-        Instantiate(DeathParticles, transform.position, Quaternion.identity * Quaternion.Euler(Vector3.right * 90f));
+        GameObject particles = Instantiate(DeathParticles, transform.position, Quaternion.identity * Quaternion.Euler(Vector3.right * 90f));
+        particles.GetComponent<ParticleSystem>().Play();
         gameObject.SetActive(false);
     }
 
