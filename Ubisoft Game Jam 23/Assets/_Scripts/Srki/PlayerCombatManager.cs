@@ -26,8 +26,6 @@ public class PlayerCombatManager : Damageable
 
     public override void HandlePain()
     {
-        
-
         print("Put damage-player effects here!");
     }
 
