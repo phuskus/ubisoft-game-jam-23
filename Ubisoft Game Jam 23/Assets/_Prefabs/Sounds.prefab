@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9174436827684721252
 MonoBehaviour:
@@ -46,12 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossMusic: {fileID: 8300000, guid: ee2824eb27e3772469c461b42cc29e81, type: 3}
+  MainMusic: {fileID: 8300000, guid: 78c69eec6f9a6ce488726b3dc6335213, type: 3}
   TransitionSpeed: 0.4
   DoorOpen:
-    Clip: {fileID: 8300000, guid: f0e59c42d4ceafe4abfcf65a85e47b06, type: 3}
+    Clip: {fileID: 8300000, guid: dfd71fe68231488448113e75e75d50d4, type: 3}
     Volume: 1
   DoorClose:
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: f0e59c42d4ceafe4abfcf65a85e47b06, type: 3}
     Volume: 0
   EnemyAttacks:
   - Clip: {fileID: 8300000, guid: a4c8769488e1d8c41ae356f543987e57, type: 3}
@@ -77,6 +78,9 @@ MonoBehaviour:
   LevelWin:
     Clip: {fileID: 8300000, guid: 4d71b69662acb4d438bd1059a8b46c04, type: 3}
     Volume: 1
+  GameWin:
+    Clip: {fileID: 0}
+    Volume: 0
 --- !u!82 &5402133397676142947
 AudioSource:
   m_ObjectHideFlags: 0
@@ -87,7 +91,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 446a98faf58205f428ec361335c9e8ea, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

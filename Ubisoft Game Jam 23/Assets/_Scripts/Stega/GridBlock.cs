@@ -70,7 +70,16 @@ public class GridBlock : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        int maxEnemyCount = Math.Max(3 + DungeonGraphManager.CurrentDungeonDifficulty * 4, 4);
+        if (bossPrefab != null && DungeonGraphManager.CurrentDungeonDifficulty == 0)
+        {
+            Enemy enemy = Instantiate(bossPrefab, transform.position, Quaternion.identity, transform);
+
+            // add enemy to list
+            enemies.Add(enemy);
+            return;
+        }
+        
+        int maxEnemyCount = Math.Max(3 + DungeonGraphManager.CurrentDungeonDifficulty * 3, 4);
         int enemiesNumber = Random.Range(3, maxEnemyCount);
 
         for (int i = 0; i < enemiesNumber; i++)
@@ -92,14 +101,6 @@ public class GridBlock : MonoBehaviour
             // add enemy to list
             enemies.Add(enemy);
         }
-
-        if (bossPrefab != null && DungeonGraphManager.CurrentDungeonDifficulty == 0)
-        {
-            Enemy enemy = Instantiate(bossPrefab, transform.position, Quaternion.identity, transform);
-
-            // add enemy to list
-            enemies.Add(enemy);
-        }
     }
 
     private void CheckEnemyDeaths()
@@ -116,8 +117,7 @@ public class GridBlock : MonoBehaviour
             EventManager.EnemyDeathEvent -= CheckEnemyDeaths;
             BlockCleared = true;
             DungeonLevelManager.RoomsLeftToClear--;
-            OpenAllValidDoors();
-            
+            OpenAllValidDoors(true);
         }
     }
 
@@ -125,6 +125,11 @@ public class GridBlock : MonoBehaviour
     {
         if (blockIsActive || BlockCleared)
             return;
+
+        if (bossPrefab != null && DungeonGraphManager.CurrentDungeonDifficulty == 0)
+        {
+            SoundManager.Instance.PlayBossMusic();
+        }
         
         if (other.gameObject.layer == _playerLayer)
         {
@@ -200,9 +205,12 @@ public class GridBlock : MonoBehaviour
         }
     }
 
-    public void OpenAllValidDoors()
+    public void OpenAllValidDoors(bool playSound = false)
     {
-        SoundManager.Instance?.PlayDoorOpen();
+        if (playSound)
+        {
+            SoundManager.Instance?.PlayDoorOpen();
+        }
         foreach (int2 dir in DIRECTIONS)
         {
             int2 pos = Coords + dir;
