@@ -297,7 +297,7 @@ Transform:
   - {fileID: 4558693754927692056}
   - {fileID: 2468115487045498794}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &817003907873767045
 MonoBehaviour:
@@ -871,6 +871,18 @@ PrefabInstance:
     - target: {fileID: 19839210, guid: e7c3a9353c0302b4cb1fab702e1db14f, type: 3}
       propertyPath: ShapeModule.radius.value
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 19839210, guid: e7c3a9353c0302b4cb1fab702e1db14f, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19839210, guid: e7c3a9353c0302b4cb1fab702e1db14f, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.16304019
+      objectReference: {fileID: 0}
+    - target: {fileID: 19839210, guid: e7c3a9353c0302b4cb1fab702e1db14f, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19839210, guid: e7c3a9353c0302b4cb1fab702e1db14f, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar

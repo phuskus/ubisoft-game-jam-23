@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  DeathParticles: {fileID: 160382, guid: b4c6e36503ea28e40b299f5d88269621, type: 3}
+  DeathParticles: {fileID: 160382, guid: 0d6909233d71ffc46923d04f5ee70ddd, type: 3}
 --- !u!114 &1957676215963656735
 MonoBehaviour:
   m_ObjectHideFlags: 0
