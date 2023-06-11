@@ -2,12 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GraphNode : MonoBehaviour
 {
+	private static readonly string NAME_ROOT = "HKEY_CLASSES_ROOT";
+	private static readonly string CHAR_POOL = "qwertyuiopasdfghjklzxcvbnm";
+	
 	public int MyLevel;
 	
 	[SerializeField] private int numberOfHops;
@@ -46,6 +51,7 @@ public class GraphNode : MonoBehaviour
 
 	private void OnClick()
 	{
+		SoundManager.Instance.PlayLevelSelect();
 		DungeonGraphManager.LoadDungeon(this);
 	}
 
@@ -61,19 +67,43 @@ public class GraphNode : MonoBehaviour
 		{
 			// start node
 			button.enabled = false;
-			textNumberOfHops.text = "S";
+			textNumberOfHops.text = ".";
 		}
 		else if (numberOfHops == 0)
 		{
 			// finish, root node
 			button.enabled = true;
-			textNumberOfHops.text = "R";
+			textNumberOfHops.text = NAME_ROOT;
 		}
 		else
 		{
 			button.enabled = true;
-			textNumberOfHops.text = $"{newNumber}";
+			textNumberOfHops.text = GetRandomFolderName();
 		}
+	}
+
+	private string GetRandomFolderName()
+	{
+		StringBuilder sb = new StringBuilder();
+
+		for (int i = 0; i < numberOfHops; i++)
+		{
+			sb.Append("../");
+		}
+		sb.Remove(sb.Length - 1, 1);
+		
+		// if (Random.value < 0.5f)
+		// {
+		// 	sb.Append(".");
+		// }
+		//
+		// int length = 4 + numberOfHops;
+		// for (int i = 0; i < length; i++)
+		// {
+		// 	sb.Append(CHAR_POOL[Random.Range(0, CHAR_POOL.Length)]);
+		// }
+		
+		return sb.ToString();
 	}
 
 	public int GetNumberOfHops() => numberOfHops;

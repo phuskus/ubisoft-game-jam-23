@@ -29,18 +29,18 @@ public class DungeonGraphManager : MonoBehaviour
 
     private void Start()
     {
-        // Reset();
+        Reset();
         InstantiateGraphView();
     }
 
-    // private void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Space))
-    //     {
-    //         Reset();
-    //         InstantiateGraphView();
-    //     }
-    // }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Reset();
+            InstantiateGraphView();
+        }
+    }
 
     private void InstantiateGraphView()
     {
