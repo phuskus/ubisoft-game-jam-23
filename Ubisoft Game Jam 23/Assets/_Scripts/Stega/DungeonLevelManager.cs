@@ -16,6 +16,7 @@ public class DungeonLevelManager : MonoBehaviour
     
     [SerializeField] private GridBlock gridBlockPrefab;
     [SerializeField] private GridBlock gridBlockEndPrefab;
+    [SerializeField] private GridBlock gridBlockStartPrefab;
     [SerializeField] private TextMeshProUGUI textRoomsCleared;
     
     
@@ -57,7 +58,7 @@ public class DungeonLevelManager : MonoBehaviour
 
         List<GridBlock> blocks = new List<GridBlock>();
         
-        GridBlock firstBlock = Instantiate(gridBlockPrefab, Vector3.zero, Quaternion.identity).GetComponent<GridBlock>();
+        GridBlock firstBlock = Instantiate(gridBlockStartPrefab, Vector3.zero, Quaternion.identity).GetComponent<GridBlock>();
         firstBlock.gameObject.name = "Grid_Block_First";
         firstBlock.BlockCleared = true;
         firstBlock.Coords = int2.zero;

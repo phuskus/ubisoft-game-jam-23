@@ -721,6 +721,8 @@ MonoBehaviour:
     type: 3}
   gridBlockEndPrefab: {fileID: 2755988647226394269, guid: 3ba882bb969c65d4199ff5be5572e81b,
     type: 3}
+  gridBlockStartPrefab: {fileID: 2755988647226394269, guid: 1e1cecc862b5db14a962581d664e9c93,
+    type: 3}
   textRoomsCleared: {fileID: 1550687055}
 --- !u!1 &1550687053
 GameObject:
