@@ -70,7 +70,16 @@ public class GridBlock : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        int maxEnemyCount = Math.Max(3 + DungeonGraphManager.CurrentDungeonDifficulty * 4, 4);
+        if (bossPrefab != null && DungeonGraphManager.CurrentDungeonDifficulty == 0)
+        {
+            Enemy enemy = Instantiate(bossPrefab, transform.position, Quaternion.identity, transform);
+
+            // add enemy to list
+            enemies.Add(enemy);
+            return;
+        }
+        
+        int maxEnemyCount = Math.Max(3 + DungeonGraphManager.CurrentDungeonDifficulty * 3, 4);
         int enemiesNumber = Random.Range(3, maxEnemyCount);
 
         for (int i = 0; i < enemiesNumber; i++)
@@ -88,14 +97,6 @@ public class GridBlock : MonoBehaviour
                 // Regular
                 enemy = Instantiate(regularEnemyPrefab, randomPosition, Quaternion.identity, transform);
             }
-
-            // add enemy to list
-            enemies.Add(enemy);
-        }
-
-        if (bossPrefab != null && DungeonGraphManager.CurrentDungeonDifficulty == 0)
-        {
-            Enemy enemy = Instantiate(bossPrefab, transform.position, Quaternion.identity, transform);
 
             // add enemy to list
             enemies.Add(enemy);

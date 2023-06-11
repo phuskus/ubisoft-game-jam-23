@@ -15,16 +15,16 @@ MonoBehaviour:
   playerStamina: 2
   playerMaxStamina: 2
   staminaDepletionSpeed: 1
-  playerWalkSpeed: 5
-  playerRunSpeed: 30
+  playerWalkSpeed: 8
+  playerRunSpeed: 35
   TurnRate: 60
   Acceleration: 10
   KnockBackPower: 20
   KnockBackFade: 70
-  ReloadTime: 0.25
+  ReloadTime: 0.15
   ProjectileSpeedStart: 18
-  ProjectileSpeedEnd: 6
-  ProjectileWeight: 25
+  ProjectileSpeedEnd: 8
+  ProjectileWeight: 20
   cameraExtendRadius: 5
   CameraHeadDistance: 18.4
   CameraFollowSpeed: 15

@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877551de489bd4c43bdb668516cd2cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDurationSeconds: 300
+  gameDurationSeconds: 420
   textTimer: {fileID: 1916763851}
   defeatPanel: {fileID: 1993623752}
 --- !u!4 &979859713
