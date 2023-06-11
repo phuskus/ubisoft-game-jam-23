@@ -11,6 +11,7 @@ public class Player : SingletonMono<Player>
     public static PlayerData Settings;
     public static PlayerGun Gun;
     public static PlayerMesh Mesh;
+    public static SoundManager Sound;
 
     [SerializeField] private Animator animator;
     public Animator Animator { get => animator; set => animator = value; }
@@ -22,6 +23,7 @@ public class Player : SingletonMono<Player>
         CursorObject = CursorObject.Instance;
         Settings = PlayerData.Instance;
         Gun = PlayerGun.Instance;
+        Sound = SoundManager.Instance;
 
         Mesh = GetComponentInChildren<PlayerMesh>();
         //animator = GetComponentInChildren<Animator>();

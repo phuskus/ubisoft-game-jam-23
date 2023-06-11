@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8060604903014117071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7979536005633447738}
+  - component: {fileID: 9174436827684721252}
+  m_Layer: 0
+  m_Name: Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7979536005633447738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8060604903014117071}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.2522044, y: 17.116053, z: -10.374668}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9174436827684721252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8060604903014117071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c57b1c231456240996154da8526cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossMusic: {fileID: 8300000, guid: ee2824eb27e3772469c461b42cc29e81, type: 3}
+  TransitionSpeed: 0.4
+  DoorOpen:
+    Clip: {fileID: 8300000, guid: f0e59c42d4ceafe4abfcf65a85e47b06, type: 3}
+    Volume: 1
+  DoorClose:
+    Clip: {fileID: 0}
+    Volume: 0
+  EnemyAttacks:
+  - Clip: {fileID: 8300000, guid: a4c8769488e1d8c41ae356f543987e57, type: 3}
+    Volume: 1
+  - Clip: {fileID: 8300000, guid: c371f32df18c42b48a0bc4a9386975b3, type: 3}
+    Volume: 1
+  - Clip: {fileID: 8300000, guid: 6a3386434bf251e468b56b6878240167, type: 3}
+    Volume: 1
+  - Clip: {fileID: 8300000, guid: 2597ff201dc40624cba6a8233457a745, type: 3}
+    Volume: 1
+  - Clip: {fileID: 8300000, guid: ad819e8f8b455df4a87120154f0911da, type: 3}
+    Volume: 1
+  PlayerAttacks:
+  - Clip: {fileID: 8300000, guid: 643429b4ce6d7364fa2fee7407846ffa, type: 3}
+    Volume: 1
+  - Clip: {fileID: 8300000, guid: 4f2e94b7ddde09d47a5896d639d6be7c, type: 3}
+    Volume: 1
+  - Clip: {fileID: 8300000, guid: fb5b36debef01e14e80a45affcf0352f, type: 3}
+    Volume: 1
+  LevelSelect:
+    Clip: {fileID: 8300000, guid: 65a1273484d17924c81d62075a897d67, type: 3}
+    Volume: 1
+  LevelWin:
+    Clip: {fileID: 8300000, guid: 4d71b69662acb4d438bd1059a8b46c04, type: 3}
+    Volume: 1
