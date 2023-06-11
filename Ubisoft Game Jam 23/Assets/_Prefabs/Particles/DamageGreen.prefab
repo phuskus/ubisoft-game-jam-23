@@ -1385,7 +1385,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 0}
-        key1: {r: 0.2054646, g: 1, b: 0, a: 1}
+        key1: {r: 0, g: 0.9499974, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -6228,8 +6228,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.5982255, g: 1, b: 0, a: 1}
-        key1: {r: 0.09392464, g: 1, b: 0, a: 0}
+        key0: {r: 0.34015658, g: 0.990566, b: 0.9386045, a: 1}
+        key1: {r: 0, g: 0.6200061, b: 1, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -9793,7 +9793,7 @@ Transform:
   - {fileID: 1590173474830692976}
   - {fileID: 2218666661456447401}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &2138570406703441571
 ParticleSystem:
