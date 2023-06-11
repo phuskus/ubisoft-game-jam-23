@@ -49,7 +49,16 @@ public class BSODSequence : MonoBehaviour
 
     public void RestartGameButton()
     {
+        Reset();
+        SoundManager.Instance.PlayMainMusic();
         GameFlowManager.ResetGame();
+    }
+
+    private void Reset()
+    {
+        BSODcanvas.gameObject.SetActive(false);
+        blackCanvas.gameObject.SetActive(false);
+        automaticRepairCanvas.alpha = 0;
     }
 
     public void QuitGameButton()

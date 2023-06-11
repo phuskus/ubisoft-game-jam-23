@@ -31,6 +31,7 @@ public class GameFlowManager : MonoBehaviour
 
 	public static void ResetGame()
 	{
+		I.textTimer.gameObject.SetActive(true);
 		I.secondsLeft = I.gameDurationSeconds;
 		I.timerEnabled = true;
 		DungeonGraphManager.Reset();
@@ -58,8 +59,9 @@ public class GameFlowManager : MonoBehaviour
 
 	public static void OnVictory()
 	{
-		//ResetGame();
+		I.textTimer.gameObject.SetActive(false);
+		DungeonLevelManager.I.DestroyLevel();
+		SoundManager.Instance.StopAllSounds();
 		EventManager.GameCompleteEvent?.Invoke();
-
-    }
+	}
 }

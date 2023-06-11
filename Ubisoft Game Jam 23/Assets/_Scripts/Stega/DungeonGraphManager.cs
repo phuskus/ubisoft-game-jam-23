@@ -175,6 +175,19 @@ public class DungeonGraphManager : MonoBehaviour
     public static void LoadDungeon(GraphNode node)
     {
         CurrentDungeonDifficulty = node.GetNumberOfHops();
+        if (CurrentDungeonDifficulty == 0)
+        {
+            // root folder, hardest
+            DungeonLevelManager.RoomCount = 10;
+        }
+        else
+        {
+            DungeonLevelManager.RoomCount = 5 + CurrentDungeonDifficulty;
+        }
+
+        DungeonLevelManager.RoomCount = 3;
+        
+        
         if (node != endNode)
         {
             (lastCompletedNodeRow, lastCompletedNodeCol) = (node.Row, node.Col);

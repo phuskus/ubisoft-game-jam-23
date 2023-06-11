@@ -18,6 +18,8 @@ public class DungeonLevelManager : MonoBehaviour
     [SerializeField] private GridBlock gridBlockEndPrefab;
     [SerializeField] private GridBlock gridBlockStartPrefab;
     [SerializeField] private TextMeshProUGUI textRoomsCleared;
+    [SerializeField] private Transform levelParent;
+    
 
     private void Awake()
     {
@@ -45,6 +47,11 @@ public class DungeonLevelManager : MonoBehaviour
         textRoomsCleared.text = $"Rooms left: {RoomsLeftToClear}";
     }
 
+    public void DestroyLevel()
+    {
+        Destroy(levelParent.gameObject);
+    }
+
     private void GenerateDungeon()
     {
         foreach (GridBlock o in FindObjectsOfType<GridBlock>())
@@ -57,7 +64,7 @@ public class DungeonLevelManager : MonoBehaviour
 
         List<GridBlock> blocks = new List<GridBlock>();
         
-        GridBlock firstBlock = Instantiate(gridBlockStartPrefab, Vector3.zero, Quaternion.identity).GetComponent<GridBlock>();
+        GridBlock firstBlock = Instantiate(gridBlockStartPrefab, Vector3.zero, Quaternion.identity, levelParent).GetComponent<GridBlock>();
         firstBlock.gameObject.name = "Grid_Block_First";
         firstBlock.BlockCleared = true;
         firstBlock.Coords = int2.zero;
@@ -101,7 +108,7 @@ public class DungeonLevelManager : MonoBehaviour
 
             Vector3 position = new Vector3(gridBlockSize.x * currentPoint.x, 0, gridBlockSize.z * currentPoint.y);
             GridBlock prefab = i == RoomCount - 2 ? gridBlockEndPrefab : gridBlockPrefab;
-            GridBlock block = Instantiate(prefab, position, Quaternion.identity).GetComponent<GridBlock>();
+            GridBlock block = Instantiate(prefab, position, Quaternion.identity, levelParent).GetComponent<GridBlock>();
             block.Coords = currentPoint;
             blocks.Add(block);
             block.gameObject.name = $"Grid_Block_{position}";

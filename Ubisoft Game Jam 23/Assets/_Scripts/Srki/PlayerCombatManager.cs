@@ -15,10 +15,6 @@ using UnityEngine.UI;
 //[RequireComponent(typeof(CharacterController))]
 public class PlayerCombatManager : Damageable
 {
-    private bool deathTriggered;
-
-    
-
     private void Start()
     {
         health = maxHealth;
@@ -31,21 +27,13 @@ public class PlayerCombatManager : Damageable
 
     public override void HandleDeath()
     {
-        if(deathTriggered) return;  // to prevent several calls
-
-        deathTriggered = true;
-
         // activate explosion particles
-        ParticleManager.Instance.SpawnPlayerDeathParticles(transform);
+        ParticleManager.Instance?.SpawnPlayerDeathParticles(transform);
 
         // Deactivate movement
-
-
+        
         // Call death event
         DeathEvent?.Invoke();
-
-        // Deactivate player
-        gameObject.SetActive(false);
 
         // Activate game lost UI
         
