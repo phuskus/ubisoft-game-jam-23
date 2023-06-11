@@ -26,7 +26,7 @@ public class BSODSequence : MonoBehaviour
     {
         BSODcanvas.SetActive(true);
 
-        // Play sounds
+        Player.Sound.PlayGameWin();
 
         StartCoroutine(EndBSOD());
     }
