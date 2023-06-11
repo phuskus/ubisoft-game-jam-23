@@ -11,10 +11,8 @@ public class EnemyHealth : Damageable
 {
     public int Health { get => health; set => health = value; } // property of inherited field
 
-    [SerializeField] private EnemyMovement Movement;
-
+    private EnemyMovement Movement;
     private Enemy enemy;
-
     public GameObject DeathParticles;
 
     private void Start()

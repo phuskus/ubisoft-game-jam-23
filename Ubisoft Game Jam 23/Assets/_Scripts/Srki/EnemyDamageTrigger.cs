@@ -9,11 +9,12 @@ public class EnemyDamageTrigger : MonoBehaviour
 
     private float waitTime = 0.5f; // time until the trigger activates again
 
-    [SerializeField] private Enemy enemy;
+    private Enemy enemy;
     public GameObject DamageParticles;
-
-    private void Start()
+    
+    private void Awake()
     {
+        enemy = GetComponent<Enemy>();
         playerLayer = LayerMask.NameToLayer("Player");
 
         if(enemy == null) Debug.Log("Component of type Enemy is not assigned");
