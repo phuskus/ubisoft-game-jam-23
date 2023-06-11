@@ -459,7 +459,7 @@ MonoBehaviour:
   Movement: {fileID: 1608548910421035975}
   animator: {fileID: 0}
   agroRange: 10
-  attackRange: 2
+  attackRange: 5
   attackDamage: 100
   walkSpeed: 1
   runSpeed: 2
