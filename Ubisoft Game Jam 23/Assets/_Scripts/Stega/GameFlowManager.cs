@@ -2,6 +2,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameFlowManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameFlowManager : MonoBehaviour
 	
 	[SerializeField] private float gameDurationSeconds = 75;
 	[SerializeField] private TextMeshProUGUI textTimer;
+	[SerializeField] private Image defeatPanel;
+	
 
 	private float secondsLeft;
 
@@ -37,6 +40,7 @@ public class GameFlowManager : MonoBehaviour
 		I.textTimer.gameObject.SetActive(true);
 		I.secondsLeft = I.gameDurationSeconds;
 		I.timerEnabled = true;
+		I.defeatPanel.gameObject.SetActive(false);
 		DungeonGraphManager.Reset();
 		SceneManager.LoadScene("DungeonGraph");
 	}
@@ -49,7 +53,7 @@ public class GameFlowManager : MonoBehaviour
 		secondsLeft -= Time.deltaTime;
 		if (secondsLeft <= 0)
 		{
-			ResetGame();
+			OnDefeat();
 			return;
 		}
 		
@@ -77,5 +81,13 @@ public class GameFlowManager : MonoBehaviour
 		DungeonLevelManager.I.DestroyLevel();
 		SoundManager.Instance.StopAllSounds();
 		EventManager.GameCompleteEvent?.Invoke();
+	}
+
+	public static void OnDefeat()
+	{
+		I.textTimer.gameObject.SetActive(false);
+		DungeonLevelManager.I?.DestroyLevel();
+		SoundManager.Instance.StopAllSounds();
+		I.defeatPanel.gameObject.SetActive(true);
 	}
 }
