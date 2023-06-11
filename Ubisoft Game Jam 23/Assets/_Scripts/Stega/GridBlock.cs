@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -69,7 +70,8 @@ public class GridBlock : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        int enemiesNumber = Random.Range(3, 3 + DungeonGraphManager.CurrentDungeonDifficulty * 4);
+        int maxEnemyCount = Math.Max(3 + DungeonGraphManager.CurrentDungeonDifficulty * 4, 4);
+        int enemiesNumber = Random.Range(3, maxEnemyCount);
 
         for (int i = 0; i < enemiesNumber; i++)
         {
@@ -191,7 +193,7 @@ public class GridBlock : MonoBehaviour
 
     public void CloseAllDoors()
     {
-        SoundManager.Instance.PlayDoorClose();
+        SoundManager.Instance?.PlayDoorClose();
         foreach (BlockPassage p in passageBlockers)
         {
             p.SetOpenState(false);
@@ -200,7 +202,7 @@ public class GridBlock : MonoBehaviour
 
     public void OpenAllValidDoors()
     {
-        SoundManager.Instance.PlayDoorOpen();
+        SoundManager.Instance?.PlayDoorOpen();
         foreach (int2 dir in DIRECTIONS)
         {
             int2 pos = Coords + dir;

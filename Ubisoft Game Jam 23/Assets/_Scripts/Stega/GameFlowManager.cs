@@ -77,6 +77,7 @@ public class GameFlowManager : MonoBehaviour
 
 	public static void OnVictory()
 	{
+		I.timerEnabled = false;
 		I.textTimer.gameObject.SetActive(false);
 		DungeonLevelManager.I.DestroyLevel();
 		SoundManager.Instance.StopAllSounds();
@@ -85,6 +86,7 @@ public class GameFlowManager : MonoBehaviour
 
 	public static void OnDefeat()
 	{
+		I.timerEnabled = false;
 		I.textTimer.gameObject.SetActive(false);
 		DungeonLevelManager.I?.DestroyLevel();
 		SoundManager.Instance.StopAllSounds();
