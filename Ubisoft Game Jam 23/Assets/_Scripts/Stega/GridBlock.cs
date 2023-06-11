@@ -117,8 +117,7 @@ public class GridBlock : MonoBehaviour
             EventManager.EnemyDeathEvent -= CheckEnemyDeaths;
             BlockCleared = true;
             DungeonLevelManager.RoomsLeftToClear--;
-            OpenAllValidDoors();
-            
+            OpenAllValidDoors(true);
         }
     }
 
@@ -206,9 +205,12 @@ public class GridBlock : MonoBehaviour
         }
     }
 
-    public void OpenAllValidDoors()
+    public void OpenAllValidDoors(bool playSound = false)
     {
-        SoundManager.Instance?.PlayDoorOpen();
+        if (playSound)
+        {
+            SoundManager.Instance?.PlayDoorOpen();
+        }
         foreach (int2 dir in DIRECTIONS)
         {
             int2 pos = Coords + dir;

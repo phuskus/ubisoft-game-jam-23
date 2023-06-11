@@ -178,7 +178,7 @@ public class DungeonGraphManager : MonoBehaviour
         if (CurrentDungeonDifficulty == 0)
         {
             // root folder, hardest
-            DungeonLevelManager.RoomCount = 10;
+            DungeonLevelManager.RoomCount = 8;
         }
         else
         {
