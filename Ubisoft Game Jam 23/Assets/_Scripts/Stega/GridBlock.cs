@@ -91,8 +91,11 @@ public class GridBlock : MonoBehaviour
 
         if(!haveAliveEnemies)
         {
+            EventManager.EnemyDeathEvent -= CheckEnemyDeaths;
             BlockCleared = true;
+            DungeonLevelManager.RoomsLeftToClear--;
             OpenAllValidDoors();
+            
         }
     }
 
@@ -140,11 +143,6 @@ public class GridBlock : MonoBehaviour
     private void OnEnable()
     {
         EventManager.EnemyDeathEvent += CheckEnemyDeaths;
-    }
-
-    private void OnDisable()
-    {
-        EventManager.EnemyDeathEvent -= CheckEnemyDeaths;
     }
 
     public void SetPassageOpenState(int2 side, bool state)
