@@ -58,7 +58,7 @@ public class SoundManager : SingletonMono<SoundManager>
     public void PlayLevelWin() => PlaySound(LevelWin);
     public void PlayPlayerFire()
     {
-        int randomIndex = Random.Range(0, EnemyAttacks.Count);
+        int randomIndex = Random.Range(0, PlayerAttacks.Count);
         PlaySound(PlayerAttacks[randomIndex]);
     }
 
