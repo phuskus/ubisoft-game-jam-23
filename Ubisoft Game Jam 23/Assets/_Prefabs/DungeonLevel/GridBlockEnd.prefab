@@ -1198,6 +1198,8 @@ MonoBehaviour:
     type: 3}
   eliteEnemyPrefab: {fileID: 7475908224119191665, guid: d931a6ddd41653a4da64af06dfcda60a,
     type: 3}
+  bossPrefab: {fileID: 1460993987467036552, guid: 0dc89530a885512448352c071dacca02,
+    type: 3}
   enemies: []
   BlockCleared: 0
   passageBlockers:
