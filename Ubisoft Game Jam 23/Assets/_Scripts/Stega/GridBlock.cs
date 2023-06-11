@@ -126,6 +126,11 @@ public class GridBlock : MonoBehaviour
     {
         if (blockIsActive || BlockCleared)
             return;
+
+        if (bossPrefab != null && DungeonGraphManager.CurrentDungeonDifficulty == 0)
+        {
+            SoundManager.Instance.PlayBossMusic();
+        }
         
         if (other.gameObject.layer == _playerLayer)
         {

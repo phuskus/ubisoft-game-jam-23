@@ -8,6 +8,7 @@ public class SoundManager : SingletonMono<SoundManager>
     private AudioSource gameAudio;
 
     public AudioClip BossMusic;
+    public AudioClip MainMusic;
     public float TransitionSpeed = 5f;
 
     public SoundEffect DoorOpen;
@@ -73,6 +74,16 @@ public class SoundManager : SingletonMono<SoundManager>
 
     public void PlayMainMusic()
     {
+        gameAudio.Stop();
+        gameAudio.clip = MainMusic;
+        gameAudio.volume = 1;
+        gameAudio.Play();
+    }
+
+    public void PlayBossMusic()
+    {
+        gameAudio.Stop();
+        gameAudio.clip = BossMusic;
         gameAudio.volume = 1;
         gameAudio.Play();
     }
