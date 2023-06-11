@@ -1,6 +1,8 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameFlowManager : MonoBehaviour
 {
@@ -8,11 +10,15 @@ public class GameFlowManager : MonoBehaviour
 	
 	[SerializeField] private float gameDurationSeconds = 75;
 	[SerializeField] private TextMeshProUGUI textTimer;
+	[SerializeField] private Image defeatPanel;
+	
 
 	private float secondsLeft;
-	private bool timerEnabled;
 
-	private void Awake()
+	private bool timerEnabled;
+	private Tween tween;
+
+    private void Awake()
 	{
 		if (I != null)
 		{
@@ -34,6 +40,7 @@ public class GameFlowManager : MonoBehaviour
 		I.textTimer.gameObject.SetActive(true);
 		I.secondsLeft = I.gameDurationSeconds;
 		I.timerEnabled = true;
+		I.defeatPanel.gameObject.SetActive(false);
 		DungeonGraphManager.Reset();
 		SceneManager.LoadScene("DungeonGraph");
 	}
@@ -46,7 +53,7 @@ public class GameFlowManager : MonoBehaviour
 		secondsLeft -= Time.deltaTime;
 		if (secondsLeft <= 0)
 		{
-			ResetGame();
+			OnDefeat();
 			return;
 		}
 		
@@ -57,11 +64,30 @@ public class GameFlowManager : MonoBehaviour
 		textTimer.text = $"{minutesLeft:D2}:{secondsLeftAsInt:D2}";
 	}
 
+	public void ReduceTime()
+	{
+		secondsLeft -= 10;
+		if (tween == null
+			|| !tween.active
+            )
+		{
+            tween = textTimer.rectTransform.DOPunchScale(Vector3.one, 0.2f);
+        }
+    }
+
 	public static void OnVictory()
 	{
 		I.textTimer.gameObject.SetActive(false);
 		DungeonLevelManager.I.DestroyLevel();
 		SoundManager.Instance.StopAllSounds();
 		EventManager.GameCompleteEvent?.Invoke();
+	}
+
+	public static void OnDefeat()
+	{
+		I.textTimer.gameObject.SetActive(false);
+		DungeonLevelManager.I?.DestroyLevel();
+		SoundManager.Instance.StopAllSounds();
+		I.defeatPanel.gameObject.SetActive(true);
 	}
 }

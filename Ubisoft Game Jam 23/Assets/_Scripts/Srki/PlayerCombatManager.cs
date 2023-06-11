@@ -9,10 +9,6 @@ using UnityEngine.UI;
 /// </summary>
 
 [DisallowMultipleComponent]
-//[RequireComponent(typeof(PlayerAction))]
-//[RequireComponent(typeof(PlayerGunSelector))]
-//[RequireComponent(typeof(SimpleCarMovement))]
-//[RequireComponent(typeof(CharacterController))]
 public class PlayerCombatManager : Damageable
 {
     private void Start()
@@ -22,7 +18,7 @@ public class PlayerCombatManager : Damageable
 
     public override void HandlePain()
     {
-        print("Put damage-player effects here!");
+        GameFlowManager.I.ReduceTime();
     }
 
     public override void HandleDeath()
@@ -38,5 +34,4 @@ public class PlayerCombatManager : Damageable
         // Activate game lost UI
         
     }
-
 }

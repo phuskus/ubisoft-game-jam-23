@@ -26,12 +26,11 @@ public abstract class Damageable : MonoBehaviour, IHandleDeath
 
     public void ReactToDamage()
     {
-        if (health > 0)
-        {
-            // custom take-damage behaviour
-            HandlePain();
-        }
-        else
+
+        // custom take-damage behaviour
+        HandlePain();
+
+        if (health <= 0)
         {
             // custom deal-with-death behaviour
             HandleDeath();

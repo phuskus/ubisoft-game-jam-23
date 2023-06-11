@@ -48,8 +48,6 @@ public class EnemyDamageTrigger : MonoBehaviour
 
         // reset the trigger
         triggered = false;
-
-        yield break;
     }
 
     private void OnEnable()

@@ -23,11 +23,6 @@ public class SoundManager : SingletonMono<SoundManager>
         gameAudio = GetComponent<AudioSource>();
     }
 
-    private void Update()
-    {
-        // if (Input.GetKeyDown(KeyCode.Space)) SwitchToBossMusic();
-    }
-
     private void PlaySound(SoundEffect sound)
     {
         sound.Play(gameAudio);

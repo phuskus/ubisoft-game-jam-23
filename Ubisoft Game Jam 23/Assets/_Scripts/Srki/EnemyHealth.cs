@@ -37,8 +37,8 @@ public class EnemyHealth : Damageable
         // weight based on damage vs max pain threshhold
 
         // spawn random hit particles
-        int x = UnityEngine.Random.Range(0, ParticleManager.Instance.HitParticles.Count);
-        Instantiate(ParticleManager.Instance.HitParticles[x], transform.position + new Vector3(0, 1, 0), Quaternion.identity, transform);
+        //int x = UnityEngine.Random.Range(0, ParticleManager.Instance.HitParticles.Count);
+        //Instantiate(ParticleManager.Instance.HitParticles[x], transform.position + new Vector3(0, 1, 0), Quaternion.identity, transform);
     }
 
     public override void HandleDeath()
