@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,9 +11,11 @@ public class GameFlowManager : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI textTimer;
 
 	private float secondsLeft;
-	private bool timerEnabled;
 
-	private void Awake()
+	private bool timerEnabled;
+	private Tween tween;
+
+    private void Awake()
 	{
 		if (I != null)
 		{
@@ -55,6 +58,17 @@ public class GameFlowManager : MonoBehaviour
 
 		textTimer.text = $"{minutesLeft:D2}:{secondsLeftAsInt:D2}";
 	}
+
+	public void ReduceTime()
+	{
+		secondsLeft -= 10;
+		if (tween == null
+			|| !tween.active
+            )
+		{
+            tween = textTimer.rectTransform.DOPunchScale(Vector3.one, 0.2f);
+        }
+    }
 
 	public static void OnVictory()
 	{

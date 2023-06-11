@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 8591491763260410576}
   - component: {fileID: 5253176774355384283}
   - component: {fileID: 5245330073784974821}
+  - component: {fileID: 3827784385353648036}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -296,7 +297,7 @@ Transform:
   - {fileID: 4558693754927692056}
   - {fileID: 2468115487045498794}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &817003907873767045
 MonoBehaviour:
@@ -310,9 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42fddef2b5f4e4645914793aa7878180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  DamageParticles: {fileID: 8968260671758749826, guid: d936d1fbb1cf4ab4b82817fb1e9eb3ae,
-    type: 3}
+  maxHealth: 1000
 --- !u!114 &1578377214928501372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,6 +409,27 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &3827784385353648036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4890012244565844194}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5433290636147228419
 GameObject:
