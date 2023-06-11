@@ -15,11 +15,13 @@ public class ActivateWindowsScript : MonoBehaviour
     private void OnEnable()
     {
         EventManager.ActivateWindowsEvent += ActivatePanel;
+        EventManager.GameCompleteEvent += DeactivatePanel;
     }
 
     private void OnDisable()
     {
         EventManager.ActivateWindowsEvent -= ActivatePanel;
+        EventManager.GameCompleteEvent -= DeactivatePanel;
     }
 
     private void ActivatePanel()
@@ -29,10 +31,15 @@ public class ActivateWindowsScript : MonoBehaviour
 
     private IEnumerator PanelFade()
     {
-        while(group.alpha < 100f)
+        while(group.alpha < 1f)
         {
             group.alpha += Time.deltaTime;
             yield return null;
         }
+    }
+
+    private void DeactivatePanel()
+    {
+        group.alpha = 0f;
     }
 }

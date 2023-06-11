@@ -58,6 +58,8 @@ public class GameFlowManager : MonoBehaviour
 
 	public static void OnVictory()
 	{
-		ResetGame();
-	}
+		//ResetGame();
+		EventManager.GameCompleteEvent?.Invoke();
+
+    }
 }
