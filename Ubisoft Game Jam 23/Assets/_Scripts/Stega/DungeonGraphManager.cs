@@ -203,6 +203,10 @@ public class DungeonGraphManager : MonoBehaviour
         }
         
         CurrentLevel += CurrentDungeonDifficulty;
+        if(CurrentLevel > 1)
+        {
+            EventManager.ActivateWindowsEvent?.Invoke();
+        }
         SceneManager.LoadScene("DungeonGraph");
     }
 
