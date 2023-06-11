@@ -67,7 +67,7 @@ public class GridBlock : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        int enemiesNumber = Random.Range(3, 3 + DungeonGraphManager.CurrentDungeonDifficulty * 5);
+        int enemiesNumber = Random.Range(3, 3 + DungeonGraphManager.CurrentDungeonDifficulty * 4);
 
         for (int i = 0; i < enemiesNumber; i++)
         {
