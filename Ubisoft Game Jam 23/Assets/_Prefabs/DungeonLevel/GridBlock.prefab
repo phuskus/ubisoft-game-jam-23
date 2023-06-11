@@ -274,7 +274,9 @@ MonoBehaviour:
     y: 0
   obstaclePostions: []
   obstaclePrefabs: []
-  enemyPrefab: {fileID: 7475908224119191665, guid: d931a6ddd41653a4da64af06dfcda60a,
+  regularEnemyPrefab: {fileID: 7475908224119191665, guid: 543c612c87e8b484ba1dd09b014fe666,
+    type: 3}
+  eliteEnemyPrefab: {fileID: 7475908224119191665, guid: d931a6ddd41653a4da64af06dfcda60a,
     type: 3}
   enemies: []
   BlockCleared: 0

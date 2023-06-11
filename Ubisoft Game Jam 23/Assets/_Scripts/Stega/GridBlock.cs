@@ -23,7 +23,9 @@ public class GridBlock : MonoBehaviour
 
     [Space(10)]
     [Header("Enemy Settings")]
-    [SerializeField] private Enemy enemyPrefab;
+    //[SerializeField] private Enemy enemyPrefab;
+    public Enemy regularEnemyPrefab;
+    public Enemy eliteEnemyPrefab;
 
     [Space(10)]
     [SerializeField] private List<Enemy> enemies = new();
@@ -72,8 +74,18 @@ public class GridBlock : MonoBehaviour
         for (int i = 0; i < enemiesNumber; i++)
         {
             Vector3 randomPosition = transform.position + new Vector3(Random.Range(-8, 9), 0, Random.Range(-8, 9));
-
-            Enemy enemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity, transform);
+            Enemy enemy;
+            
+            if (Random.value < 0.2f)
+            {
+                // Elite
+                enemy = Instantiate(eliteEnemyPrefab, randomPosition, Quaternion.identity, transform);
+            }
+            else
+            {
+                // Regular
+                enemy = Instantiate(regularEnemyPrefab, randomPosition, Quaternion.identity, transform);
+            }
 
             // add enemy to list
             enemies.Add(enemy);
